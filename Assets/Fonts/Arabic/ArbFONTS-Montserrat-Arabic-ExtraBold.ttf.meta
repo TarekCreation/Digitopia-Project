@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 7813190fd1617e64a9004e274b979e9a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Montserrat-Arabic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 334fc808d377a0743b6a8e7c91cb7624, type: 3}
+  - {fileID: 12800000, guid: 462c0edf7b6828a4999458b115132fa6, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

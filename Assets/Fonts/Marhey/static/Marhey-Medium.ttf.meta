@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: ac7621d35e2222346b01bda9b5f68c34
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Marhey
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2730795a0b9e7ce41adb28936cc75ca8, type: 3}
+  - {fileID: 12800000, guid: c5303bb4e64ef0b4084b7e066848accd, type: 3}
+  - {fileID: 12800000, guid: a34bd47445f43104c80d50cc7f7a4878, type: 3}
+  - {fileID: 12800000, guid: eaec63c790c057044ae262c4adf80da2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
