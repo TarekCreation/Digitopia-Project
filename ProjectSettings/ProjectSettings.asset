@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: MainTemplate2D
+  companyName: TarekCreations
+  productName: Malware Mash
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -776,10 +776,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 58d09be3-cd8f-4a44-925f-1cd7481f942a
+  cloudProjectId: 709ba3b2-6f1a-4e2a-9d33-6fcbb5734b27
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: MainTemplate2D
+  projectName: MainTemplate2D (1)
   organizationId: tarekmohameddarwish
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

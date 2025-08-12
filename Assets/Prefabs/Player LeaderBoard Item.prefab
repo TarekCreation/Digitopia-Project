@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0623\u0639\u0644\u0649 \u0645\u062C\u0645\u0648\u0639 \u0644\u0644\u0646\u0642\u0627\u0637"
+  m_text: "\u0645\u062C\u0645\u0648\u0639 \u0627\u0644\u0646\u0642\u0627\u0637"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a6b98b2ca6887a44d9f61dd67fd6ba45, type: 2}
   m_sharedMaterial: {fileID: -8808867822562304918, guid: a6b98b2ca6887a44d9f61dd67fd6ba45, type: 2}
@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80172e7093d66a24a9c280683dbfd615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArabicText: "\u0623\u0639\u0644\u0649 \u0645\u062C\u0645\u0648\u0639 \u0644\u0644\u0646\u0642\u0627\u0637"
-  EnglishText: Best score
+  ArabicText: "\u0645\u062C\u0645\u0648\u0639 \u0627\u0644\u0646\u0642\u0627\u0637"
+  EnglishText: Current Score
   ArabicTextAsset: {fileID: 11400000, guid: a6b98b2ca6887a44d9f61dd67fd6ba45, type: 2}
   EnglishTextAsset: {fileID: 11400000, guid: 64247784d2fa9f642a10913424e15385, type: 2}
   doesAlignToLanguage: 0

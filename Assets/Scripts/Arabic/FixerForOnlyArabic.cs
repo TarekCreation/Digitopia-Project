@@ -11,7 +11,7 @@ public class FixerForOnlyArabic : MonoBehaviour
     public TMP_FontAsset EnglishTextAsset;
     public string fixedText;
     private bool ShowTashkeel = true;
-    private bool UseHinduNumbers = true;
+    private bool UseHinduNumbers = false;
     private bool isArabic = false;
     public bool doesAlignToLanguage = false;
 

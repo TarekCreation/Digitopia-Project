@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 public class LeaderboardManager : MonoBehaviour
 {
-    public string leaderboardId = "TarekTemplate2D";
+    public string leaderboardId = "DigitopiaProject";
     public GameObject loadingScreen;
     public GameObject failedScreen;
     public GameObject listScreen;
