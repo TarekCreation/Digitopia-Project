@@ -21,6 +21,10 @@ public class topDownMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+        if (GetComponent<PlayerTopDown>().CanControl)
+        {
+            rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+        }
     }
+        
 }
