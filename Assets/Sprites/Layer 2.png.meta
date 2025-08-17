@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0c80eb9c188ec6e479c96a82146b73dd
+guid: a9d72efba9a279f4bb10db9bef59c641
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -63,7 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -117,22 +117,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Oudo UI_0
+      name: Layer 2_0
       rect:
         serializedVersion: 2
-        x: 516
+        x: 0
         y: 0
-        width: 261
-        height: 297
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 127
+        height: 192
+      alignment: 9
+      pivot: {x: 0.4938367, y: 0.055617437}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 356689ad8258efd43a814ea1889422a8
-      internalID: -584439048
+      spriteID: 370a8b25f51c4934c90be15bce5473f9
+      internalID: -2036018040
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Oudo UI_0: -584439048
+      Layer 2_0: -2036018040
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

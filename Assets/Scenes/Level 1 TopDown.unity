@@ -13751,6 +13751,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1618587671, guid: 6f964e350a781bf46830bfe281928ab4, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618587671, guid: 6f964e350a781bf46830bfe281928ab4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5492383171474865929, guid: 6f964e350a781bf46830bfe281928ab4, type: 3}
       propertyPath: m_Name
       value: Player(TopDown)

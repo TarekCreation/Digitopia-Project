@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTopDown : MonoBehaviour
 {
@@ -11,12 +12,16 @@ public class PlayerTopDown : MonoBehaviour
     public GameObject DeathParticles;
     private Rigidbody2D rb;
     public float knockbackForce = 5f;
-    public GameObject Visual;
+    public GameObject[] ThingsToDisableOnDeath;
     public bool CanControl = true;
+    public Slider healthSlider;
+    Coroutine myCoroutine = null;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        healthSlider.maxValue = health;
+        healthSlider.value = health;
     }
 
     // Update is called once per frame
@@ -42,13 +47,21 @@ public class PlayerTopDown : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         rb.velocity = Vector2.zero;
         CanControl = true;
-        
+
     }
     public void GetHit(Transform enemyTransform)
     {
         if (health > 1)
         {
-            health -= 1f;
+            if (myCoroutine == null)
+            {
+                myCoroutine = StartCoroutine(PlaySliderAnimation(health - 1));
+            }
+            else
+            {
+                StopCoroutine(myCoroutine);
+                myCoroutine = StartCoroutine(PlaySliderAnimation(health - 1));
+            }
             GetComponent<Animator>().Play("PlayerHit");
             if (enemyTransform != null)
             {
@@ -62,6 +75,18 @@ public class PlayerTopDown : MonoBehaviour
         }
         else
         {
+            if (myCoroutine == null)
+            {
+                StartCoroutine(PlayDeathAnimation(health - 1));
+            }
+            else
+            {
+                StopCoroutine(myCoroutine);
+                StartCoroutine(PlayDeathAnimation(health - 1));
+            }
+
+
+
             GetComponent<Animator>().Play("PlayerDeath");
             if (enemyTransform != null)
             {
@@ -75,15 +100,46 @@ public class PlayerTopDown : MonoBehaviour
             StartCoroutine(Death());
         }
     }
-    
+
     IEnumerator Death()
     {
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.15f);
         GetComponent<Collider2D>().enabled = false;
         GetComponent<topDownMovement>().enabled = false;
-        Visual.SetActive(false);
+        for (int i = 0; i < ThingsToDisableOnDeath.Length; i++)
+        {
+            ThingsToDisableOnDeath[i].SetActive(false);
+        }
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         GetComponent<PlayerTopDown>().enabled = false;
+    }
+    IEnumerator PlaySliderAnimation(float Reqhealth)
+    {
+
+
+        float currentHealth = health;
+        health = Reqhealth;
+        while (currentHealth > Reqhealth)
+        {
+            currentHealth -= 0.07f;
+            healthSlider.value = currentHealth;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        healthSlider.value = Reqhealth;
+    }
+    IEnumerator PlayDeathAnimation(float Reqhealth)
+    {
+        float currentHealth = health;
+        health = Reqhealth;
+        while (currentHealth > Reqhealth)
+        {
+            currentHealth -= 0.1f;
+            healthSlider.value = currentHealth;
+            yield return new WaitForSeconds(0.01f);
+        }
+        
+        healthSlider.value = Reqhealth;
     }
 }
