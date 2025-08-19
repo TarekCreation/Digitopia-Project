@@ -957,6 +957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 13
   rb: {fileID: 5492383171474865933}
+  Joystick: {fileID: 0}
 --- !u!114 &5492383172882093468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,7 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7727876376279466386, guid: bd0c9e01651cc21418a1564954b15af0, type: 3}
   Arrow: {fileID: 593245899}
-  health: 15
+  health: 6
   DeathParticles: {fileID: 3471751960528942641, guid: 41616f75f8d50c648b6829c4ab7d1e8a, type: 3}
   knockbackForce: 15
   ThingsToDisableOnDeath:
@@ -980,6 +981,9 @@ MonoBehaviour:
   - {fileID: 612587619}
   CanControl: 1
   healthSlider: {fileID: 612587621}
+  Joystick: {fileID: 0}
+  isShooting: 0
+  ShootingAngle: 0
 --- !u!95 &4876553858455109585
 Animator:
   serializedVersion: 5

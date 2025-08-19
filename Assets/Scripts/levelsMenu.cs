@@ -9,7 +9,8 @@ public class levelsMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //////Temporary//////
+        PlayerPrefs.SetInt("levelAt", 2); 
         int levelAt = PlayerPrefs.GetInt("levelAt", 1);
         for (int i = 0; i < buttons.Length; i++)
         {

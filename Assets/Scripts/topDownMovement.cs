@@ -7,18 +7,31 @@ public class topDownMovement : MonoBehaviour
     public float moveSpeed;
     public Rigidbody2D rb;
     Vector2 movement;
-    // Start is called before the first frame update
+
+    public FixedJoystick Joystick;
+    
+    
+#if UNITY_EDITOR || UNITY_STANDALONE
     void Start()
     {
-        
+        Joystick.gameObject.SetActive(false); 
     }
-
-    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
     }
+#elif UNITY_ANDROID || UNITY_IOS
+    void Start()
+    {
+        Joystick.gameObject.SetActive(true); 
+    }
+    void Update()
+    {
+        movement.x = Joystick.Horizontal;
+        movement.y = Joystick.Vertical;
+    }
+#endif
     void FixedUpdate()
     {
         if (GetComponent<PlayerTopDown>().CanControl)
@@ -26,5 +39,4 @@ public class topDownMovement : MonoBehaviour
             rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
         }
     }
-        
 }

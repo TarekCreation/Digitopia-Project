@@ -16,9 +16,18 @@ public class PlayerTopDown : MonoBehaviour
     public bool CanControl = true;
     public Slider healthSlider;
     Coroutine myCoroutine = null;
-    // Start is called before the first frame update
+    public FixedJoystick Joystick;
+    public bool isShooting = false;
+    public float ShootingAngle = 0;
+    
+
     void Start()
     {
+#if UNITY_EDITOR || UNITY_STANDALONE
+        Joystick.gameObject.SetActive(false);
+#elif UNITY_ANDROID || UNITY_IOS
+        Joystick.gameObject.SetActive(true); 
+#endif
         rb = GetComponent<Rigidbody2D>();
         healthSlider.maxValue = health;
         healthSlider.value = health;
@@ -27,6 +36,7 @@ public class PlayerTopDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR || UNITY_STANDALONE
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -36,10 +46,41 @@ public class PlayerTopDown : MonoBehaviour
         {
             Shoot(angle);
         }
+#elif UNITY_ANDROID || UNITY_IOS
+        Vector2 direction = new Vector2(Joystick.Horizontal, Joystick.Vertical);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle));
+        Arrow.transform.rotation = quaternion;
+        if (direction.magnitude > 0.5f)
+        {
+            ShootingAngle = angle;
+            if (!isShooting)
+            {
+
+                isShooting = true;
+                StartCoroutine(CustomShoot());
+            }
+            
+        }else
+        {
+            isShooting = false;
+        }
+#endif
+        
     }
     public void Shoot(float angle)
     {
         Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, angle - 90f)));
+
+    }
+    IEnumerator CustomShoot()
+    {
+        while (isShooting)
+        {
+            Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, ShootingAngle - 90f)));
+            yield return new WaitForSeconds(0.3f);
+        }
+        
 
     }
     IEnumerator ReActivateControl()
