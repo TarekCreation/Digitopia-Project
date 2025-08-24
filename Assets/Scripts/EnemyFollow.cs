@@ -34,13 +34,24 @@ public class EnemyFollow : MonoBehaviour
 
         }
     }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerTopDown>().GetHit(transform);
-
+            Vector2 direction = (transform.position - collision.transform.position).normalized;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(direction * knockbackForce * 0.3f, ForceMode2D.Impulse);
+            StartCoroutine(ResetVelocity());
         }    
+
+
+    }
+    IEnumerator ResetVelocity()
+    {
+        yield return new WaitForSeconds(0.5f);
+        rb.velocity = Vector2.zero;
     }
     void OnTriggerEnter2D(Collider2D other)
     {

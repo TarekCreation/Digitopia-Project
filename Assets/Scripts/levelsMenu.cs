@@ -10,7 +10,7 @@ public class levelsMenu : MonoBehaviour
     void Start()
     {
         //////Temporary//////
-        PlayerPrefs.SetInt("levelAt", 2); 
+        PlayerPrefs.SetInt("levelAt", 3); 
         int levelAt = PlayerPrefs.GetInt("levelAt", 1);
         for (int i = 0; i < buttons.Length; i++)
         {

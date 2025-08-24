@@ -11,7 +11,7 @@ public class VirusPop : MonoBehaviour
     public bool isMoving = false;
     public bool isDying = false;
     private CinemachineImpulseSource impulseSource;
-
+    public VirusColor virusColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,7 @@ public class VirusPop : MonoBehaviour
     public void FinishedDyingAnimation()
     {
         isDying = false;
+        virusColor.SetRandomVirusType();
     }
     // Update is called once per frame
     public void PopUp()

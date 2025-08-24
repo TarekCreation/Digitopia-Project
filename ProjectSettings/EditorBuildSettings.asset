@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1 TopDown.unity
     guid: 4c385c6b92606894cb035972d7e6b9ed
   - enabled: 1
-    path: Assets/Scenes/New Scene.unity
+    path: Assets/Scenes/Minigame1.unity
     guid: f45fd63e4c80aaa4599ea47ef290271a
+  - enabled: 1
+    path: Assets/Scenes/Minigame2.unity
+    guid: f2ff69ee6e4eed04ba809d9e0170c7af
   m_configObjects: {}

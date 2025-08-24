@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 public class Score : MonoBehaviour
 {
-    private int score = 0;
+    public int score = 0;
     public TextMeshProUGUI scoreText;
     
     void Start()
@@ -14,8 +14,15 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     public void UpdateScore(int value)
     {
+        
         score += value;
+        if (score < 0)
+        {
+            score = 0;
+        }
         scoreText.text = "Score: " + score.ToString();
+        
+        
     }
 
 
