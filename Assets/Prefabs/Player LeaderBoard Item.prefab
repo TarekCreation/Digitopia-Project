@@ -1162,8 +1162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4243cd6905fdadd4685929850af053c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArabicTextAsset: {fileID: 11400000, guid: a6b98b2ca6887a44d9f61dd67fd6ba45, type: 2}
-  EnglishTextAsset: {fileID: 11400000, guid: a6b98b2ca6887a44d9f61dd67fd6ba45, type: 2}
+  ArabicTextAsset: {fileID: 11400000, guid: 81398942e41394d47a54b7114fde9e6c, type: 2}
+  EnglishTextAsset: {fileID: 11400000, guid: 81398942e41394d47a54b7114fde9e6c, type: 2}
   fixedText: 
   doesAlignToLanguage: 0
 --- !u!1 &2854230343173368366

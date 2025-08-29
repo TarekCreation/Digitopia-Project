@@ -75,6 +75,18 @@ public class CharacterController2D : MonoBehaviour
 			}
 		}
 	}
+	
+	public void Jump()
+	{
+		fJumpPressedRemember = fJumpPressedRememberTime;
+	}
+	public void NotJump()
+	{
+		if (m_Rigidbody2D.velocity.y > 0)
+		{
+			m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * fCutJumpHeight);
+		}
+	}
 	// Update is called once per frame
 	public void Update()
 	{
@@ -85,7 +97,8 @@ public class CharacterController2D : MonoBehaviour
 		}
 
 		fJumpPressedRemember -= Time.deltaTime;
-		if (Input.GetButtonDown("Jump"))
+#if UNITY_EDITOR || UNITY_STANDALONE
+        if (Input.GetButtonDown("Jump"))
 		{
 			fJumpPressedRemember = fJumpPressedRememberTime;
 		}
@@ -97,6 +110,8 @@ public class CharacterController2D : MonoBehaviour
 				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * fCutJumpHeight);
 			}
 		}
+#endif
+		
 
 		if ((fJumpPressedRemember > 0) && (fGroundedRemember > 0))
 		{

@@ -37,18 +37,16 @@ public class playerMovement : MonoBehaviour
         {
             Shoot();
         }
-#elif UNITY_ANDROID || UNITY_IOS
-        horizontalMove = Joystick.Horizontal * runSpeed;
 		
+		
+#elif UNITY_ANDROID || UNITY_IOS
+        
+		horizontalMove = Joystick.Horizontal * runSpeed;
 #endif
 
 
 
 
-	}
-	public void Jump()
-	{
-		jump = true;
 	}
 
 	void FixedUpdate()

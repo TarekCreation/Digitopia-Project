@@ -75,13 +75,15 @@ public class SpiderVirus : MonoBehaviour
     }
     IEnumerator Death()
     {
+        GetComponent<Collider2D>().enabled = false;
         Score score = FindObjectOfType<Score>();
-        
+
         score.UpdateScore(1);
-        
-    
+
+
         Instantiate(DeathParticles, VirusPos.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.15f);
         ParentAnim.Play("NormalMode");
+        GetComponent<Collider2D>().enabled = true;
     }
 }

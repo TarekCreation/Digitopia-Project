@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerTopDown : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public GameObject Arrow;
+    public GameObject Visual;
     private Vector2 mousePosition;
     public float health = 3f;
     public GameObject DeathParticles;
@@ -19,6 +19,8 @@ public class PlayerTopDown : MonoBehaviour
     public FixedJoystick Joystick;
     public bool isShooting = false;
     public float ShootingAngle = 0;
+    public Transform Gunpoint;
+
     
 
     void Start()
@@ -40,8 +42,8 @@ public class PlayerTopDown : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle));
-        Arrow.transform.rotation = quaternion;
+        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle -90f));
+        Visual.transform.rotation = quaternion;
         if (Input.GetMouseButtonDown(0))
         {
             Shoot(angle);
@@ -50,7 +52,7 @@ public class PlayerTopDown : MonoBehaviour
         Vector2 direction = new Vector2(Joystick.Horizontal, Joystick.Vertical);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle));
-        Arrow.transform.rotation = quaternion;
+        Visual.transform.rotation = quaternion;
         if (direction.magnitude > 0.5f)
         {
             ShootingAngle = angle;
@@ -70,7 +72,7 @@ public class PlayerTopDown : MonoBehaviour
     }
     public void Shoot(float angle)
     {
-        Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, angle - 90f)));
+        Instantiate(bulletPrefab, Gunpoint.position, Quaternion.Euler(new Vector3(0, 0, angle - 90f)));
 
     }
     IEnumerator CustomShoot()
