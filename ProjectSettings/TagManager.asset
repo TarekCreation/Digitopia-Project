@@ -7,6 +7,10 @@ TagManager:
   - Music
   - Bullet
   - Hammer
+  - OutOfBounds
+  - Cell
+  - GridCell
+  - DestroyCells
   layers:
   - Default
   - TransparentFX

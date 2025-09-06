@@ -15,7 +15,7 @@ public class CountryButtonPick : MonoBehaviour
     public GameObject SelectMenu;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         PlayerPrefsId = PlayerPrefs.GetInt("Country", 0);
         country_id = transform.GetSiblingIndex();
