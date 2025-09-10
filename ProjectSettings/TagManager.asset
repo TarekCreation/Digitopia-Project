@@ -11,6 +11,7 @@ TagManager:
   - Cell
   - GridCell
   - DestroyCells
+  - OkayCollider
   layers:
   - Default
   - TransparentFX

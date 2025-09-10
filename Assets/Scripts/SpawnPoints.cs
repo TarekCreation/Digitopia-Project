@@ -13,8 +13,8 @@ public class SpawnPoints : MonoBehaviour
         {
             int rnd = Random.Range(0, blocksPrefabs.Length);
             GameObject block = Instantiate(blocksPrefabs[rnd], points[i].position, blocksPrefabs[rnd].transform.rotation);
-            block.GetComponent<Movable>().isTheStartingOne = true;
-            block.GetComponent<Movable>().isLocked = false;
+            block.GetComponentInChildren<Movable>().isTheStartingOne = true;
+            block.GetComponentInChildren<Movable>().isLocked = false;
         }
     }
 
