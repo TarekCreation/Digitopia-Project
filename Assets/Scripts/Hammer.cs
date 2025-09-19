@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Hammer : MonoBehaviour
@@ -7,11 +8,59 @@ public class Hammer : MonoBehaviour
     private Animator animator;
     private bool isMovingHammer = false;
     private Vector2 movingPosition;
-    public Vector2 offset = new Vector2(0, 0); 
+    public Vector2 offset = new Vector2(0, 0);
+    private Score score;
+    public int numberOfKilledViruses = 0;
+    private int Combo = 0;
+    public Animator comboAnimator;
+    public TextMeshProUGUI comboText;
+    public int ComboMaxSize = 3;
+    public int BestCombo = 0;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        score = FindObjectOfType<Score>();
+    }
+    public void IncreaseNumberOfKilledViruses()
+    {
+        numberOfKilledViruses++;
+        Combo++;
+        if (Combo > BestCombo)
+        {
+            BestCombo = Combo;
+        }
+        StopAllCoroutines();
+        StartCoroutine(ComboResetCoroutine());
+        if (Combo > 1)
+        {
+            
+            float targetSize = 1 + (Combo - 2) * 0.2f;
+            if (targetSize <= ComboMaxSize)
+            {
+                comboAnimator.transform.localScale = new Vector3(targetSize, targetSize, targetSize);
+            }
+            else
+            {
+                comboAnimator.transform.localScale = new Vector3(ComboMaxSize, ComboMaxSize, ComboMaxSize);
+            }
+            comboAnimator.Play("ComboVisual", -1, 0f);
+            comboText.text = "x" + Combo.ToString();
+        }
+        if (score != null)
+        {
+            score.UpdateScore(1 + (Combo - 1));
+        }
+    }
+    IEnumerator ComboResetCoroutine()
+    {
+        int currentCombo = Combo;
+        yield return new WaitForSeconds(1f);
+        if (currentCombo == Combo)
+        {
+            Combo = 0;
+        }
+        
     }
     public void FinishedHammerAnimation()
     {

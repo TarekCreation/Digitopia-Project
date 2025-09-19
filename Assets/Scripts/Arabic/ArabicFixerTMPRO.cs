@@ -16,7 +16,7 @@ public class ArabicFixerTMPRO : MonoBehaviour
     public TMP_FontAsset EnglishTextAsset;
     private string fixedText;
     private bool ShowTashkeel = true;
-    private bool UseHinduNumbers = true;
+    private bool UseHinduNumbers = false;
     private bool isArabic = false;
     public bool doesAlignToLanguage = false;
 
@@ -158,35 +158,68 @@ public class ArabicFixerTMPRO : MonoBehaviour
         
         isInitilized = true;
     }
-    public void FixTextForUI()
+    public void ValueChanged_PlusArabic(string English, string Arabic)
     {
-        if (!string.IsNullOrEmpty(fixedText))
+        if (English != null && English != "" && Arabic != null && Arabic != "")
         {
-            string rtlText = ArabicSupport.Fix(fixedText, ShowTashkeel, UseHinduNumbers);
-            rtlText = rtlText.Replace("\r", ""); // the Arabix fixer Return \r\n for everyy \n .. need to be removed
 
-            string finalText = "";
-            string[] rtlParagraph = rtlText.Split('\n');
+            ArabicText = Arabic;
+            EnglishText = English;
+            if (isArabic)
+            {
+                fixedText = ArabicText;
+            }else
+            {
+                fixedText = EnglishText;
+            }
+        }
+        else
+        {
+            fixedText = "";
+            ArabicText = "";
+            EnglishText = "";
 
             tmpTextComponent.text = "";
-            for (int lineIndex = 0; lineIndex < rtlParagraph.Length; lineIndex++)
-            {
-                string[] words = rtlParagraph[lineIndex].Split(' ');
-                System.Array.Reverse(words);
-                tmpTextComponent.text = string.Join(" ", words);
-                Canvas.ForceUpdateCanvases();
-                for (int i = 0; i < tmpTextComponent.textInfo.lineCount; i++)
-                {
-                    int startIndex = tmpTextComponent.textInfo.lineInfo[i].firstCharacterIndex;
-                    int endIndex = (i == tmpTextComponent.textInfo.lineCount - 1) ? tmpTextComponent.text.Length
-                        : tmpTextComponent.textInfo.lineInfo[i + 1].firstCharacterIndex;
-                    int length = endIndex - startIndex;
-                    string[] lineWords = tmpTextComponent.text.Substring(startIndex, length).Split(' ');
-                    System.Array.Reverse(lineWords);
-                    finalText = finalText + string.Join(" ", lineWords).Trim() + "\n";
-                }
-            }
-            tmpTextComponent.text = finalText.TrimEnd('\n');
         }
+        
+        isInitilized = true;
+    }
+    public void FixTextForUI()
+    {
+        if (isArabic)
+        {
+            if (!string.IsNullOrEmpty(fixedText))
+            {
+                string rtlText = ArabicSupport.Fix(fixedText, ShowTashkeel, UseHinduNumbers);
+                rtlText = rtlText.Replace("\r", ""); // the Arabix fixer Return \r\n for everyy \n .. need to be removed
+
+                string finalText = "";
+                string[] rtlParagraph = rtlText.Split('\n');
+
+                tmpTextComponent.text = "";
+                for (int lineIndex = 0; lineIndex < rtlParagraph.Length; lineIndex++)
+                {
+                    string[] words = rtlParagraph[lineIndex].Split(' ');
+                    System.Array.Reverse(words);
+                    tmpTextComponent.text = string.Join(" ", words);
+                    Canvas.ForceUpdateCanvases();
+                    for (int i = 0; i < tmpTextComponent.textInfo.lineCount; i++)
+                    {
+                        int startIndex = tmpTextComponent.textInfo.lineInfo[i].firstCharacterIndex;
+                        int endIndex = (i == tmpTextComponent.textInfo.lineCount - 1) ? tmpTextComponent.text.Length
+                            : tmpTextComponent.textInfo.lineInfo[i + 1].firstCharacterIndex;
+                        int length = endIndex - startIndex;
+                        string[] lineWords = tmpTextComponent.text.Substring(startIndex, length).Split(' ');
+                        System.Array.Reverse(lineWords);
+                        finalText = finalText + string.Join(" ", lineWords).Trim() + "\n";
+                    }
+                }
+                tmpTextComponent.text = finalText.TrimEnd('\n');
+            }
+        }else
+        {
+            tmpTextComponent.text = fixedText;
+        }
+        
     }
 }

@@ -12,6 +12,9 @@ TagManager:
   - GridCell
   - DestroyCells
   - OkayCollider
+  - Enemy
+  - CamLens
+  - Connection
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Block
   - 
   - 
   - 

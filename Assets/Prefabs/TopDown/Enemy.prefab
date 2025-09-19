@@ -182,6 +182,7 @@ MonoBehaviour:
   DeathParticles: {fileID: 1340294485042828385, guid: f2a672fb898f74c4e948c8cefce571cb, type: 3}
   knockbackForce: 15
   CanControl: 1
+  value: 1
 --- !u!58 &6689464436802895143
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6689464436802895145}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b2bd7e7b43c4c547b0116a877f89a85, type: 3}
   m_Name: 

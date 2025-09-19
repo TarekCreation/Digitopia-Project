@@ -8,6 +8,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Leaderboards;
 using Unity.Services.Leaderboards.Models;
 using System.Threading.Tasks;
+using System;
 
 public class LeaderboardManager : MonoBehaviour
 {
@@ -35,16 +36,15 @@ public class LeaderboardManager : MonoBehaviour
         public string playerName;
     }
 
-    public void SetAllLeaderboardData(string _name, int _score, int _country)
+    public void SetAllLeaderboardData(int _score, int _country)
     {
-        PlayerPrefs.SetString("Player", _name);
         PlayerPrefs.SetInt("Score", _score);
         PlayerPrefs.SetInt("Country", _country);
     }
     // Start is called before the first frame update
     async void Start()
     {
-        SetAllLeaderboardData(currentName, currentScore, currentCountry);
+        SetAllLeaderboardData(currentScore, currentCountry);
 
         loadingScreen.SetActive(true);
         failedScreen.SetActive(false);
@@ -68,6 +68,12 @@ public class LeaderboardManager : MonoBehaviour
 
     public async Task AddScoreWithCountry()
     {
+        long TotalScore = 0;
+        for (int i = 1; i <= 8; i++)
+        {
+            TotalScore += PlayerPrefs.GetInt("MiniGame" + i.ToString() + "_Score", 0);
+        }
+        PlayerPrefs.SetInt("Score",Convert.ToInt32(TotalScore));
         int score = PlayerPrefs.GetInt("Score", 0);
         string savedName = PlayerPrefs.GetString("Player", "Unnamed");
         int countryId = PlayerPrefs.GetInt("Country", 0);

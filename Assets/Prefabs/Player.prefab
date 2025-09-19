@@ -261,6 +261,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 8159747411084691889}
   runSpeed: 80
+  bulletPrefab: {fileID: 0}
+  gunPoint: {fileID: 0}
+  AndroidUI: {fileID: 0}
+  Joystick: {fileID: 0}
+  numberOfKilledViruses: 0
+  numberOfLostItems: 0
+  deathParticles: {fileID: 3471751960528942641, guid: 41616f75f8d50c648b6829c4ab7d1e8a, type: 3}
+  CanControl: 1
+  Visual: {fileID: 8159747412006895246}
 --- !u!70 &94899326
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

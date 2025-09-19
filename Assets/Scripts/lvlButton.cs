@@ -9,6 +9,6 @@ public class lvlButton : MonoBehaviour
     public int number;
     public void loadScene()
     {
-        SceneManager.LoadScene(number);
+        FindObjectOfType<SceneLoader>().LoadScene(number, null);
     }
 }

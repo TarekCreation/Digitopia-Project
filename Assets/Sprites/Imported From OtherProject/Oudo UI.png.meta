@@ -113,6 +113,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -125,7 +137,7 @@ TextureImporter:
         width: 261
         height: 297
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -133,6 +145,90 @@ TextureImporter:
       bones: []
       spriteID: 356689ad8258efd43a814ea1889422a8
       internalID: -584439048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oudo UI_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1775
+        width: 1360
+        height: 458
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc022752346cf7240a0e373116fd4f34
+      internalID: 1379372667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oudo UI_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1310
+        width: 1360
+        height: 466
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02fb8ba0825b3a441b3da41ca26d7fb6
+      internalID: -966967249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oudo UI_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 837
+        width: 1360
+        height: 473
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a17ce180fa88c44b81bd5f62785a56
+      internalID: -1788742090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oudo UI_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 338
+        width: 1360
+        height: 486
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e36fddc9c5ac52744835e26a30c17b76
+      internalID: 2139920445
       vertices: []
       indices: 
       edges: []
@@ -149,6 +245,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Oudo UI_0: -584439048
+      Oudo UI_1: 1379372667
+      Oudo UI_2: -966967249
+      Oudo UI_3: -1788742090
+      Oudo UI_4: 2139920445
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

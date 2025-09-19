@@ -141,3 +141,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efe7fa6dc4059940880f2890effbdac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GO_Track_MainMenuMusic: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_StoryMusic: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame1: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame2: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame3: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame4: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame5: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame6: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame7: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_Track_Minigame8: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  GO_volume_MainMenuMusic: 1
+  GO_volume_StoryMusic: 1
+  GO_volume_Minigames: 1
+  DecreaseTo_Volume: 0.2
+  isDecreased: 0

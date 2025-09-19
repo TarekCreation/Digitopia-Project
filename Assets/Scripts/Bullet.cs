@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public float lifetime = 2f;
+    public GameObject hitEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,15 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Block"))
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+    public void Die()
+    {
+        Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+        Instantiate(hitEffect, transform.position, rotation);
+        Destroy(gameObject);
     }
 }

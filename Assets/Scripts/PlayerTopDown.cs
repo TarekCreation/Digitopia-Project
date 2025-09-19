@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerTopDown : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject ShootEffect;
     public GameObject Visual;
     private Vector2 mousePosition;
     public float health = 3f;
@@ -20,8 +21,9 @@ public class PlayerTopDown : MonoBehaviour
     public bool isShooting = false;
     public float ShootingAngle = 0;
     public Transform Gunpoint;
-
-    
+    public bool CanShoot = true;
+    public Animator ReloadAnimator;
+    private Coroutine shootingCoroutine;
 
     void Start()
     {
@@ -46,21 +48,36 @@ public class PlayerTopDown : MonoBehaviour
         Visual.transform.rotation = quaternion;
         if (Input.GetMouseButtonDown(0))
         {
-            Shoot(angle);
+            if (CanShoot)
+            {
+                Shoot(angle);
+                CanShoot = false;
+                StartCoroutine(ResetShoot());
+            }
+            
         }
 #elif UNITY_ANDROID || UNITY_IOS
         Vector2 direction = new Vector2(Joystick.Horizontal, Joystick.Vertical);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle));
+        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle -90f));
         Visual.transform.rotation = quaternion;
         if (direction.magnitude > 0.5f)
         {
             ShootingAngle = angle;
             if (!isShooting)
             {
-
+                
                 isShooting = true;
-                StartCoroutine(CustomShoot());
+                if (shootingCoroutine == null)
+                {
+                    shootingCoroutine = StartCoroutine(CustomShoot());
+
+                }else
+                {
+                    StopCoroutine(shootingCoroutine);
+                    shootingCoroutine = StartCoroutine(CustomShoot());
+                }
+                
             }
             
         }else
@@ -70,17 +87,26 @@ public class PlayerTopDown : MonoBehaviour
 #endif
         
     }
+    IEnumerator ResetShoot()
+    {
+        ReloadAnimator.Play("ReloadVisual", -1, 0f);
+        
+        yield return new WaitForSeconds(0.2f);
+        CanShoot = true;
+    }
     public void Shoot(float angle)
     {
         Instantiate(bulletPrefab, Gunpoint.position, Quaternion.Euler(new Vector3(0, 0, angle - 90f)));
-
+        ShootEffect.GetComponent<Animator>().Play("ShootEffect", -1, 0f);
     }
     IEnumerator CustomShoot()
     {
         while (isShooting)
         {
             Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, ShootingAngle - 90f)));
-            yield return new WaitForSeconds(0.3f);
+            ShootEffect.GetComponent<Animator>().Play("ShootEffect", -1, 0f); 
+    
+            yield return new WaitForSeconds(0.2f);
         }
         
 
@@ -154,7 +180,11 @@ public class PlayerTopDown : MonoBehaviour
         {
             ThingsToDisableOnDeath[i].SetActive(false);
         }
+        isShooting = false;
+        StopAllCoroutines();
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        SpwanManager spawnManager = FindObjectOfType<SpwanManager>();
+        FindObjectOfType<GUIscript>().EndGame(spawnManager.numberOfKilledEnemies_V1, spawnManager.numberOfKilledEnemies_V2, spawnManager.numberOfKilledEnemies_V3, spawnManager.numberOfKilledEnemies_V4);
         GetComponent<PlayerTopDown>().enabled = false;
     }
     IEnumerator PlaySliderAnimation(float Reqhealth)

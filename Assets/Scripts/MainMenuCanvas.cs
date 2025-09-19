@@ -23,6 +23,7 @@ public class MainMenuCanvas : MonoBehaviour
     
     void Start()
     {
+        PlayerPrefs.SetString("DidStartGameBefore", "Yes");
         MusicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1);
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume", 1);
         SetMusic(PlayerPrefs.GetFloat("MusicVolume", 1));

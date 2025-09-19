@@ -179,8 +179,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8867924, g: 0.17986828, b: 0.19208434, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ad59ae48c77cdb8478741c4e39f47030, type: 3}
+  m_Color: {r: 1, g: 0.740566, b: 0.74488986, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -230,8 +230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   didPlace: 0
   display: {fileID: 7700394643016358120}
+  value: 
   type: 3
-  Particles: {fileID: 2348800337903249392, guid: ce886f18bee695a43aa2498c8b62e3c8, type: 3}
+  Particles: {fileID: 2348800337903249392, guid: 77702adc046cb4b4fa6656807c451c54, type: 3}
   isDeactivated: 0
   CanBeDestroyed: 0
   Pos: {x: 0, y: 0}

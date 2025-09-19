@@ -5,22 +5,27 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     public int score = 0;
-    public TextMeshProUGUI scoreText;
-    
+    public ArabicFixerTMPRO scoreText;
+    public bool isDisabled = false;
+
     void Start()
     {
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.ValueChanged_PlusArabic("Score: " + score.ToString(), "النقاط: " + score.ToString());
+
     }
     // Start is called before the first frame update
     public void UpdateScore(int value)
     {
-        
-        score += value;
-        if (score < 0)
+        if (!isDisabled)
         {
-            score = 0;
+            score += value;
+            if (score < 0)
+            {
+                score = 0;
+            }
+            scoreText.ValueChanged_PlusArabic("Score: " + score.ToString(), "النقاط: " + score.ToString());
         }
-        scoreText.text = "Score: " + score.ToString();
+        
         
         
     }

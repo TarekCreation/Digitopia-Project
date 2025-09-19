@@ -119,8 +119,8 @@ public class CellPrefab : MonoBehaviour
         }
         else if (other.CompareTag("DestroyCells") && didPlace && CanBeDestroyed)
         {
-            GameObject _particles = Instantiate(Particles, transform.position, Particles.transform.rotation);
-            _particles.GetComponent<ParticleSystem>().startColor = spriteRenderer.color;
+            Instantiate(Particles, transform.position, Particles.transform.rotation);
+            
             Destroy(gameObject);
         }
     }

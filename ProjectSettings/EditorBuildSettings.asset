@@ -6,15 +6,72 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/StartGame.unity
+    guid: c846326ce25190c4797bda894ba1b114
+  - enabled: 1
+    path: Assets/Scenes/Menu/MainMenu.unity
     guid: 5212c17f97a35bb48ba26b26c2b41314
   - enabled: 1
-    path: Assets/Scenes/Level 1 TopDown.unity
+    path: Assets/Scenes/Minigames/Minigame1.unity
     guid: 4c385c6b92606894cb035972d7e6b9ed
   - enabled: 1
-    path: Assets/Scenes/Minigame1.unity
+    path: Assets/Scenes/Minigames/Minigame2.unity
     guid: f45fd63e4c80aaa4599ea47ef290271a
   - enabled: 1
-    path: Assets/Scenes/Minigame2.unity
+    path: Assets/Scenes/Minigames/Minigame3.unity
     guid: f2ff69ee6e4eed04ba809d9e0170c7af
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Minigame4.unity
+    guid: 3b3b0b6148b85b949af9da44226dc24a
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Minigame5.unity
+    guid: e820ecbe5d314324ebd8a220618425c7
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Minigame6.unity
+    guid: 4257ec57aaaaae24c8c1b8a2a738f8a7
+  - enabled: 1
+    path: Assets/Scenes/Minigames/Minigame7.unity
+    guid: 39665da3d89cc0943a7551758bda7786
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story1.unity
+    guid: 95d508b59cae44d4dbec2f613ee5d24c
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story2.unity
+    guid: b10ddb4b9e8b5ee46905a38e1e746eed
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story3.unity
+    guid: 2583222c5fd4faf45ba653fad8a1c59c
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story4.unity
+    guid: 79a541e36297a8d46a897815c77c56c0
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story5.unity
+    guid: 8dd0215e0f48e0e4fb5e8b7c0abc835c
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story6.unity
+    guid: d1e98c8c5350ccb43bba8ebfb02d74da
+  - enabled: 1
+    path: Assets/Scenes/StoryScenes/Story7.unity
+    guid: af6800cc4284aea4d8eccd42f8cea9db
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial1.unity
+    guid: 029674bfffd2c664dace99fa0813f8f8
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial2.unity
+    guid: 7b03e394e5483e8408d58262d2673564
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial3.unity
+    guid: dd07ec2352d503040a0c516d402412ac
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial4.unity
+    guid: 74b8a079b88750742816e145ba4f8b5c
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial5.unity
+    guid: 195677151cab32e45910eeb5a635ebce
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial6.unity
+    guid: 723bd4f8f29466e48a3809d251134a8d
+  - enabled: 1
+    path: Assets/Scenes/Tutorial/Tutorial7.unity
+    guid: e48945b9bf0d00d46831ab284cbfcd73
   m_configObjects: {}

@@ -12,8 +12,6 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
     private List<CellPrefab> cellPrefabs = new List<CellPrefab>();
     private BlockPuzzleCell[] allCells;
 
-    
-    
     public int gridWidth = 5;
     public int gridHeight = 5;
     public List<bool> gridCells = new List<bool>();
@@ -53,12 +51,8 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
             }
         }
         allCells = FindObjectsOfType<BlockPuzzleCell>();
-
-        
-        
-
-        
     }
+
     public void Start()
     {
         if (gridCells[0])
@@ -167,95 +161,81 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
             isLocked = false;
         }
     }
+
     void Update()
     {
         if (isLocked)
         {
             breakBool = false;
-            foreach (var block in cellPrefabs)
-            {
-                block.isDeactivated = true;
-            }
+            foreach (var block in cellPrefabs) block.isDeactivated = true;
         }
         else
         {
             if (!breakBool)
             {
-                foreach (var block in cellPrefabs)
-                {
-                    block.isDeactivated = false;
-                }
+                foreach (var block in cellPrefabs) block.isDeactivated = false;
                 breakBool = true;
             }
         }
-        
-        
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+#if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR
         if (isLocked) return;
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(eventData.position);
         offset = transform.position - new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z);
+#elif UNITY_IOS || UNITY_ANDROID
+        if (isLocked) return;
+        if (Input.touchCount > 0)
+        {
+            Vector3 touchWorldPos = mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+            offset = transform.position - new Vector3(touchWorldPos.x, touchWorldPos.y, transform.position.z);
+        }
+#endif
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+#if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR
         if (isLocked) return;
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(eventData.position);
         transform.position = new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z) + offset;
-
-
+#elif UNITY_IOS || UNITY_ANDROID
+        if (isLocked) return;
+        if (Input.touchCount > 0)
+        {
+            Vector3 touchWorldPos = mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+            transform.position = new Vector3(touchWorldPos.x, touchWorldPos.y, transform.position.z) + offset;
+        }
+#endif
         if (CentreBlock != null && CentreBlock.NearestCollider() != null && IsInBounds)
         {
             hoveringCells = FindObjectOfType<GridScript>().CheckIfCanPlaceAtThisCell(CentreBlock.NearestCollider().GetComponent<BlockPuzzleCell>(), this);
-
             if (hoveringCells != null)
             {
-                foreach (var block in cellPrefabs)
-                {
-                    block.isDeactivated = false;
-                }
+                foreach (var block in cellPrefabs) block.isDeactivated = false;
             }
             else
             {
-                foreach (var block in cellPrefabs)
-                {
-                    block.isDeactivated = true;
-                }
+                foreach (var block in cellPrefabs) block.isDeactivated = true;
             }
         }
         else
         {
-            foreach (var block in cellPrefabs)
-            {
-                block.isDeactivated = true;
-            }
+            foreach (var block in cellPrefabs) block.isDeactivated = true;
         }
-        foreach (var cell in FindObjectsOfType<BlockPuzzleCell>())
-        {
-            cell.ABlockIsMovingHere = false;
-        }
+        foreach (var cell in FindObjectsOfType<BlockPuzzleCell>()) cell.ABlockIsMovingHere = false;
         if (hoveringCells != null)
         {
-            foreach (var item in hoveringCells)
-            {
-                item.ABlockIsMovingHere = true;
-            }
+            foreach (var item in hoveringCells) item.ABlockIsMovingHere = true;
         }
-        
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        foreach (var cell in FindObjectsOfType<BlockPuzzleCell>())
-        {
-            cell.ABlockIsMovingHere = false;
-        }
-        foreach (var block in cellPrefabs)
-        {
-            block.isDeactivated = false;
-        }
+        foreach (var cell in FindObjectsOfType<BlockPuzzleCell>()) cell.ABlockIsMovingHere = false;
+        foreach (var block in cellPrefabs) block.isDeactivated = false;
         if (isLocked) return;
         if (!IsInBounds)
         {
@@ -263,7 +243,6 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
         }
         else
         {
-            
             if (hoveringCells != null)
             {
                 if (hoveringCells.Count != cellPrefabs.Count)
@@ -277,27 +256,26 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
             {
                 transform.position = homePosition;
             }
-            
         }
     }
 
-    
-
     void Place()
     {
+        if (cellPrefabs.Count > 3)
+        {
+            Score score = FindObjectOfType<Score>();
+            if (score != null) score.UpdateScore(Mathf.CeilToInt(cellPrefabs.Count / 3));
+        }
+        FindObjectOfType<GridScript>().NumberOfPlacedPieces = FindObjectOfType<GridScript>().NumberOfPlacedPieces + 1;
         for (int i = 0; i < cellPrefabs.Count; i++)
         {
             var block = cellPrefabs[i];
             var cell = hoveringCells[i];
-
             block.transform.position = cell.transform.position;
             cell.SetOccupied(block.gameObject);
-
             block.didPlace = true;
             block.Place();
         }
-        
-        
         StartCoroutine(WaitAfterPlace());
     }
 
@@ -316,13 +294,9 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
                     break;
                 }
             }
-            if (!FoundOneWaiting)
-            {
-                isWaiting = false;
-            }
+            if (!FoundOneWaiting) isWaiting = false;
         }
         GenerateRandomBlock();
-        
         FindObjectOfType<GridScript>().CheckIfComplete();
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
@@ -336,30 +310,20 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
         block.GetComponentInChildren<Movable>().isTheStartingOne = false;
     }
 
-    
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("OkayCollider"))
-        {
-            IsInBounds = true;
-        }
+        if (other.CompareTag("OkayCollider")) IsInBounds = true;
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("OkayCollider"))
-        {
-            IsInBounds = true;
-        }
+        if (other.CompareTag("OkayCollider")) IsInBounds = true;
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("OkayCollider"))
-        {
-            IsInBounds = false;
-        }
+        if (other.CompareTag("OkayCollider")) IsInBounds = false;
     }
 }
+
 
 
 

@@ -18,5 +18,6 @@ public class SpiderVirusParent : MonoBehaviour
         {
             score.UpdateScore(-1);
         }
+        FindObjectOfType<playerMovement>().IncreaseNumberOfLostItems();
     }
 }

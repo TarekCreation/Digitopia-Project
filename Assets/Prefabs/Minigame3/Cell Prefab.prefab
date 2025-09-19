@@ -212,8 +212,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.6293363, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: aec45a8af59a8cb499be0dd80783768a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -263,10 +263,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   didPlace: 0
   display: {fileID: 8495453866186127618}
+  value: 
   type: 0
   Particles: {fileID: 2348800337903249392, guid: ce886f18bee695a43aa2498c8b62e3c8, type: 3}
   isDeactivated: 0
   CanBeDestroyed: 0
+  Pos: {x: 0, y: 0}
+  isTheCentreBlock: 0
 --- !u!50 &4339342367899288436
 Rigidbody2D:
   serializedVersion: 4

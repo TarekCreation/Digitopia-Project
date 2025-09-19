@@ -13,7 +13,6 @@ public class TechBackground : MonoBehaviour
     // Update is called once per frame
     public void CurrentPointReachedDestination(int index)
     {
-        Debug.Log("length: " + backgroundLightColors.Count );
         if (index < backgroundLightColors.Count)
         {
             backgroundLightColors[index].PointReachedDestination();

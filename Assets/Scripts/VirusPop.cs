@@ -12,12 +12,32 @@ public class VirusPop : MonoBehaviour
     public bool isDying = false;
     private CinemachineImpulseSource impulseSource;
     public VirusColor virusColor;
+    public bool isAShield = false;
+    private float shieldPercentage = 0;
+    private float popUpInterval = 25f;
+
     // Start is called before the first frame update
     void Start()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
         animator = GetComponent<Animator>();
-        InvokeRepeating("PopUp", Random.Range(1f, 10f), Random.Range(2f, 25f));
+        StartCoroutine(PopUpCoroutine());
+        InvokeRepeating("DecreaseTime", 2f, 5f);
+    }
+    IEnumerator PopUpCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(1f, popUpInterval));
+            PopUp();
+        }
+    }
+    void DecreaseTime()
+    {
+        if (popUpInterval > 2)
+        {
+            popUpInterval -= 1f;
+        }
     }
     public void FinishedPopAnimation()
     {
@@ -25,31 +45,69 @@ public class VirusPop : MonoBehaviour
     }
     public void FinishedDyingAnimation()
     {
+        isAShield = false;
         isDying = false;
         virusColor.SetRandomVirusType();
     }
     // Update is called once per frame
     public void PopUp()
     {
-        if (!isMoving && !isDying)
+        if (shieldPercentage < 11)
         {
-            isMoving = true;
-            animator.Play("VirusJump");
+            shieldPercentage += 0.5f;
         }
+        int rnd = Random.Range(0, 20);
+        if (rnd < shieldPercentage)
+        {
+            isAShield = true;
+        }
+        else
+        {
+            isAShield = false;
+        }
+        if (isAShield)
+        {
+            if (!isMoving && !isDying)
+            {
+                isMoving = true;
+                animator.Play("ShieldJump");
+            }
+        }
+        else
+        {
+            if (!isMoving && !isDying)
+            {
+                isAShield = false;
+                isMoving = true;
+                animator.Play("VirusJump");
+            }
+        }
+        
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Hammer"))
         {
-            isDying = true;
-            isMoving = false;
-            animator.Play("EnemyDie");
-            CamShakeManager.Instance.CameraShake(impulseSource, 1f);
-            Score score = FindObjectOfType<Score>();
-            if (score != null)
+            if (isAShield)
             {
-                score.UpdateScore(1);
+                isAShield = false;
+                isMoving = false;
+                animator.Play("ShieldBreak");
+                CamShakeManager.Instance.CameraShake(impulseSource, 1f);
+                FindObjectOfType<GUIscript>().EndGame(FindObjectOfType<Hammer>().numberOfKilledViruses,FindObjectOfType<Hammer>().BestCombo);
+                FindObjectOfType<Hammer>().enabled = false;
+                return;
             }
+            else
+            {
+                isDying = true;
+                isMoving = false;
+                animator.Play("EnemyDie");
+                CamShakeManager.Instance.CameraShake(impulseSource, 1f);
+                
+                FindObjectOfType<Hammer>().IncreaseNumberOfKilledViruses();
+            }
+            
         }
     }
 }

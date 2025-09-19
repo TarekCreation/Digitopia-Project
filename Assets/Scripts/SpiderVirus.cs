@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpiderVirus : MonoBehaviour
@@ -11,7 +12,13 @@ public class SpiderVirus : MonoBehaviour
     public Transform VirusPos;
     public Animator ParentAnim;
     public bool isWaitingForANewVirus = true;
+    public bool itemIsShielded = false;
     public float[] waitingPeriod;
+    public GameObject[] Visuals;
+    public GameObject VisualsParent;
+    public CircleCollider2D circleCollider;
+    public float startingWaitingTime = 1;
+    public GameObject maskObject;
 
     void Start()
     {
@@ -19,17 +26,50 @@ public class SpiderVirus : MonoBehaviour
     }
     IEnumerator waitingCheck()
     {
+        yield return new WaitForSeconds(startingWaitingTime);
         while (true)
         {
             float randomWait = Random.Range(waitingPeriod[0], waitingPeriod[1]);
             yield return new WaitForSeconds(randomWait);
-            if (isWaitingForANewVirus)
+            if (isWaitingForANewVirus && !itemIsShielded)
             {
-                ParentAnim.SetTrigger("Go");
-                isWaitingForANewVirus = false;
-                StartCoroutine(isWaitingForANewVirusTrue());
+                int rnd = Random.Range(0, 20);
+                if (rnd < 2)
+                {
+                    ParentAnim.SetTrigger("Shield");
+                    itemIsShielded = true;
+                    StartCoroutine(DeactivateShield());
+                }
+                else
+                {
+                    int random = Random.Range(0, Visuals.Length);
+                    foreach (var item in Visuals)
+                    {
+                        item.SetActive(false);
+                    }
+                    Visuals[random].SetActive(true);
+                    maskObject.GetComponent<Animator>().Play("VirusHitMask",-1,0);
+                    int TypeRnd = Random.Range(0, 10);
+                    if (TypeRnd == 0)
+                    {
+                        circleCollider.radius = 1.32f;
+                        health = 4;
+                        VisualsParent.transform.localScale = new Vector3(1.35f, 1.35f, 1.35f);
+                    }
+                    else
+                    {
+                        circleCollider.radius = 0.9556336f;
+                        health = 2;
+                        VisualsParent.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+
+                    ParentAnim.SetTrigger("Go");
+                    isWaitingForANewVirus = false;
+                    StartCoroutine(isWaitingForANewVirusTrue());
+                }
+
             }
-            
+
         }
         
     }
@@ -38,6 +78,11 @@ public class SpiderVirus : MonoBehaviour
     {
 
 
+    }
+    IEnumerator DeactivateShield()
+    {
+        yield return new WaitForSeconds(16f);
+        itemIsShielded = false;
     }
     IEnumerator isWaitingForANewVirusTrue()
     {
@@ -77,9 +122,9 @@ public class SpiderVirus : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = false;
         Score score = FindObjectOfType<Score>();
-
-        score.UpdateScore(1);
-
+        
+        score.UpdateScore(2);
+        FindObjectOfType<playerMovement>().IncreaseNumberOfKilledViruses();
 
         Instantiate(DeathParticles, VirusPos.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.15f);

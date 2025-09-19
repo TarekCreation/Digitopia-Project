@@ -9,6 +9,10 @@ public class GridScript : MonoBehaviour
     private List<BlockPuzzleCell> cells = new List<BlockPuzzleCell>();
     public GameObject DestroyRowPrefab;
     public bool WentToCheck = false;
+    int numberOf_Weak_Passwords = 0;
+    int numberOf_Medium_Passwords = 0;
+    int numberOf_Strong_Passwords = 0;
+    public int NumberOfPlacedPieces = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +64,7 @@ public class GridScript : MonoBehaviour
         }
         if (!AtLeastOneOption)
         {
-            Debug.Log("Game Over");
+            FindObjectOfType<GUIscript>().EndGame(NumberOfPlacedPieces, numberOf_Weak_Passwords, numberOf_Medium_Passwords, numberOf_Strong_Passwords);
         }else
         {
             WentToCheck = false;
@@ -111,27 +115,31 @@ public class GridScript : MonoBehaviour
                     cell.ClearContent();
                 }
             }
-            Debug.Log("Completed Row Password: " + password);
             PasswordScore passwordScore = FindObjectOfType<PasswordStrengthChecker>().CheckStrength(password);
             if (passwordScore == PasswordScore.VeryWeak)
             {
-                FindObjectOfType<Score>().UpdateScore(-150);
+                numberOf_Weak_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(-15);
             }
             else if (passwordScore == PasswordScore.Weak)
             {
-                FindObjectOfType<Score>().UpdateScore(-100);
+                numberOf_Weak_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(-10);
             }
             else if (passwordScore == PasswordScore.Medium)
             {
-                FindObjectOfType<Score>().UpdateScore(150);
+                numberOf_Medium_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(15);
             }
             else if (passwordScore == PasswordScore.Strong)
             {
-                FindObjectOfType<Score>().UpdateScore(200);
+                numberOf_Strong_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(20);
             }
             else if (passwordScore == PasswordScore.VeryStrong)
             {
-                FindObjectOfType<Score>().UpdateScore(300);
+                numberOf_Strong_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(30);
             }
             Quaternion rotation = new Quaternion();
             int rnd = UnityEngine.Random.Range(0, 2);
@@ -161,27 +169,31 @@ public class GridScript : MonoBehaviour
                     cell.ClearContent();
                 }
             }
-            Debug.Log("Completed Column Password: " + password);
             PasswordScore passwordScore = FindObjectOfType<PasswordStrengthChecker>().CheckStrength(password);
             if (passwordScore == PasswordScore.VeryWeak)
             {
-                FindObjectOfType<Score>().UpdateScore(-150);
+                numberOf_Weak_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(-15);
             }
             else if (passwordScore == PasswordScore.Weak)
             {
-                FindObjectOfType<Score>().UpdateScore(-100);
+                numberOf_Weak_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(-10);
             }
             else if (passwordScore == PasswordScore.Medium)
             {
-                FindObjectOfType<Score>().UpdateScore(150);
+                numberOf_Medium_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(15);
             }
             else if (passwordScore == PasswordScore.Strong)
             {
-                FindObjectOfType<Score>().UpdateScore(200);
+                numberOf_Strong_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(20);
             }
             else if (passwordScore == PasswordScore.VeryStrong)
             {
-                FindObjectOfType<Score>().UpdateScore(300);
+                numberOf_Strong_Passwords++;
+                FindObjectOfType<Score>().UpdateScore(30);
             }
             Quaternion rotation = new Quaternion();
             int rnd = UnityEngine.Random.Range(0, 2);
