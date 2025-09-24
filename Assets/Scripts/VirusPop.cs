@@ -65,6 +65,7 @@ public class VirusPop : MonoBehaviour
         {
             isAShield = false;
         }
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.virusJump,0.5f);
         if (isAShield)
         {
             if (!isMoving && !isDying)
@@ -93,6 +94,7 @@ public class VirusPop : MonoBehaviour
                 isAShield = false;
                 isMoving = false;
                 animator.Play("ShieldBreak");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shieldBreak);
                 CamShakeManager.Instance.CameraShake(impulseSource, 1f);
                 FindObjectOfType<GUIscript>().EndGame(FindObjectOfType<Hammer>().numberOfKilledViruses,FindObjectOfType<Hammer>().BestCombo);
                 FindObjectOfType<Hammer>().enabled = false;
@@ -103,6 +105,7 @@ public class VirusPop : MonoBehaviour
                 isDying = true;
                 isMoving = false;
                 animator.Play("EnemyDie");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.virusPunch);
                 CamShakeManager.Instance.CameraShake(impulseSource, 1f);
                 
                 FindObjectOfType<Hammer>().IncreaseNumberOfKilledViruses();

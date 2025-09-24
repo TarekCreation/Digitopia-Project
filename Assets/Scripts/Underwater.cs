@@ -18,6 +18,11 @@ public class Underwater : MonoBehaviour
     {
         float rndSize = Random.Range(0.6f, 2f);
         int rndX = Random.Range(0, 2);
+        if (rndX == 0)
+        {
+            FindObjectOfType<SFXManager>().PlayRandomBubbleSound();
+        }
+        
         GameObject _bubble = Instantiate(bubble, BubblePos.position, Quaternion.identity);
         Vector3 size = _bubble.transform.localScale;
         size *= rndSize;

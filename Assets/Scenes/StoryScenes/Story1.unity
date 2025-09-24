@@ -862,6 +862,30 @@ PrefabInstance:
       propertyPath: TutorialSceneIndex
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[0].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 2b8dcf3a678b0db42b458ce624b337c0, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[1].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 0551a4ac23f9ba241a5f1688a25b045f, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[2].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b274208326b8a7c408aa36795a147f18, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[3].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: aec8082907cbedd42bda26f3eb79d7a5, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[4].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 2032ce3f8f95dea43a3e38634235537b, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[5].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: f8599c2178235e34daa7d73c4b97395d, type: 3}
     - target: {fileID: 4158680188680362097, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

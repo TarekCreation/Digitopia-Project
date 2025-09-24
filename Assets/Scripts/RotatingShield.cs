@@ -15,7 +15,7 @@ public class RotatingShield : MonoBehaviour
 
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0;
         Vector3 direction = mouseWorldPosition - transform.position;

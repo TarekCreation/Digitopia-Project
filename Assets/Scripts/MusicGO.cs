@@ -4,7 +4,6 @@ using UnityEngine;
 public class Music : MonoBehaviour
 {
     public static AudioClip Track_MainMenuMusic;
-    public static AudioClip Track_StoryMusic;
     public static AudioClip Track_Minigame1;
     public static AudioClip Track_Minigame2;
     public static AudioClip Track_Minigame3;
@@ -12,10 +11,7 @@ public class Music : MonoBehaviour
     public static AudioClip Track_Minigame5;
     public static AudioClip Track_Minigame6;
     public static AudioClip Track_Minigame7;
-    public static AudioClip Track_Minigame8;
     public static float volume_MainMenuMusic = 1;
-    public static float volume_StoryMusic = 1;
-    public static float volume_Minigames = 1;
     
 
 }
@@ -26,7 +22,6 @@ public class MusicGO : MonoBehaviour
     private AudioSource myAudioSource;
 
     public AudioClip GO_Track_MainMenuMusic;
-    public AudioClip GO_Track_StoryMusic;
     public AudioClip GO_Track_Minigame1;
     public AudioClip GO_Track_Minigame2;
     public AudioClip GO_Track_Minigame3;
@@ -34,13 +29,15 @@ public class MusicGO : MonoBehaviour
     public AudioClip GO_Track_Minigame5;
     public AudioClip GO_Track_Minigame6;
     public AudioClip GO_Track_Minigame7;
-    public AudioClip GO_Track_Minigame8;
-    public float GO_volume_MainMenuMusic = 1;
-    public float GO_volume_StoryMusic = 1;
-    public float GO_volume_Minigames = 1;
-    
-
-    public float DecreaseTo_Volume = 0.2f;
+    private float GO_volume_MainMenuMusic = 0.9f;
+    private float GO_volume_Minigame1 = 0.7f;
+    private float GO_volume_Minigame2 = 0.5f;
+    private float GO_volume_Minigame3 = 0.9f;
+    private float GO_volume_Minigame4 = 0.6f;
+    private float GO_volume_Minigame5 = 0.7f;
+    private float GO_volume_Minigame6 = 0.7f;
+    private float GO_volume_Minigame7 = 0.8f;
+    private float DecreaseTo_Volume = 0.2f;
     public bool isDecreased = false;
     public AsyncOperation currentOperation = null;
     public static MusicGO Instance { get; private set; }
@@ -48,7 +45,6 @@ public class MusicGO : MonoBehaviour
     private void Awake()
     {
         Music.Track_MainMenuMusic = GO_Track_MainMenuMusic;
-        Music.Track_StoryMusic = GO_Track_StoryMusic;
         Music.Track_Minigame1 = GO_Track_Minigame1;
         Music.Track_Minigame2 = GO_Track_Minigame2;
         Music.Track_Minigame3 = GO_Track_Minigame3;
@@ -56,10 +52,7 @@ public class MusicGO : MonoBehaviour
         Music.Track_Minigame5 = GO_Track_Minigame5;
         Music.Track_Minigame6 = GO_Track_Minigame6;
         Music.Track_Minigame7 = GO_Track_Minigame7;
-        Music.Track_Minigame8 = GO_Track_Minigame8;
         Music.volume_MainMenuMusic = GO_volume_MainMenuMusic;
-        Music.volume_StoryMusic = GO_volume_StoryMusic;
-        Music.volume_Minigames = GO_volume_Minigames;
         myAudioSource = GetComponent<AudioSource>();
         if (Instance == null)
         {
@@ -78,12 +71,27 @@ public class MusicGO : MonoBehaviour
         if (audioClip == Music.Track_MainMenuMusic)
         {
             volume = Music.volume_MainMenuMusic;
-        }else if (audioClip == Music.Track_StoryMusic)
+        }else if (audioClip == Music.Track_Minigame1)
         {
-            volume = Music.volume_StoryMusic;
-        }else
+            volume = GO_volume_Minigame1;
+        }else if (audioClip == Music.Track_Minigame2)
         {
-            volume = Music.volume_Minigames;
+            volume = GO_volume_Minigame2;
+        }else if (audioClip == Music.Track_Minigame3)
+        {
+            volume = GO_volume_Minigame3;
+        }else if (audioClip == Music.Track_Minigame4)
+        {
+            volume = GO_volume_Minigame4;
+        }else if (audioClip == Music.Track_Minigame5)
+        {
+            volume = GO_volume_Minigame5;
+        }else if (audioClip == Music.Track_Minigame6)
+        {
+            volume = GO_volume_Minigame6;
+        }else if (audioClip == Music.Track_Minigame7)
+        {
+            volume = GO_volume_Minigame7;
         }
         StartCoroutine(SwitchAudioWait(audioClip, volume));
     }
@@ -151,12 +159,27 @@ public class MusicGO : MonoBehaviour
         if (myAudioSource.clip == Music.Track_MainMenuMusic)
         {
             volume = Music.volume_MainMenuMusic;
-        }else if (myAudioSource.clip == Music.Track_StoryMusic)
+        }else if (myAudioSource.clip == Music.Track_Minigame1)
         {
-            volume = Music.volume_StoryMusic;
-        }else
+            volume = GO_volume_Minigame1;
+        }else if (myAudioSource.clip == Music.Track_Minigame2)
         {
-            volume = Music.volume_Minigames;
+            volume = GO_volume_Minigame2;
+        }else if (myAudioSource.clip == Music.Track_Minigame3)
+        {
+            volume = GO_volume_Minigame3;
+        }else if (myAudioSource.clip == Music.Track_Minigame4)
+        {
+            volume = GO_volume_Minigame4;
+        }else if (myAudioSource.clip == Music.Track_Minigame5)
+        {
+            volume = GO_volume_Minigame5;
+        }else if (myAudioSource.clip == Music.Track_Minigame6)
+        {
+            volume = GO_volume_Minigame6;
+        }else if (myAudioSource.clip == Music.Track_Minigame7)
+        {
+            volume = GO_volume_Minigame7;
         }
         StartCoroutine(FadeWait(volume));
     }
@@ -221,12 +244,27 @@ public class MusicGO : MonoBehaviour
         if (myAudioSource.clip == Music.Track_MainMenuMusic)
         {
             volume = Music.volume_MainMenuMusic;
-        }else if (myAudioSource.clip == Music.Track_StoryMusic)
+        }else if (myAudioSource.clip == Music.Track_Minigame1)
         {
-            volume = Music.volume_StoryMusic;
-        }else
+            volume = GO_volume_Minigame1;
+        }else if (myAudioSource.clip == Music.Track_Minigame2)
         {
-            volume = Music.volume_Minigames;
+            volume = GO_volume_Minigame2;
+        }else if (myAudioSource.clip == Music.Track_Minigame3)
+        {
+            volume = GO_volume_Minigame3;
+        }else if (myAudioSource.clip == Music.Track_Minigame4)
+        {
+            volume = GO_volume_Minigame4;
+        }else if (myAudioSource.clip == Music.Track_Minigame5)
+        {
+            volume = GO_volume_Minigame5;
+        }else if (myAudioSource.clip == Music.Track_Minigame6)
+        {
+            volume = GO_volume_Minigame6;
+        }else if (myAudioSource.clip == Music.Track_Minigame7)
+        {
+            volume = GO_volume_Minigame7;
         }
         StartCoroutine(IncreaseVolumeWait(volume));
     }

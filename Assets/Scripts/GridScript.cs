@@ -13,6 +13,7 @@ public class GridScript : MonoBehaviour
     int numberOf_Medium_Passwords = 0;
     int numberOf_Strong_Passwords = 0;
     public int NumberOfPlacedPieces = 0;
+    public Animator zero;
 
     // Start is called before the first frame update
     void Start()
@@ -118,26 +119,37 @@ public class GridScript : MonoBehaviour
             PasswordScore passwordScore = FindObjectOfType<PasswordStrengthChecker>().CheckStrength(password);
             if (passwordScore == PasswordScore.VeryWeak)
             {
+                zero.SetTrigger("Weak");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyWeakPassword, 0.7f);
                 numberOf_Weak_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(-15);
+                
             }
             else if (passwordScore == PasswordScore.Weak)
             {
+                zero.SetTrigger("Weak");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyWeakPassword, 0.7f);
                 numberOf_Weak_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(-10);
             }
             else if (passwordScore == PasswordScore.Medium)
             {
+                zero.SetTrigger("Medium");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyMediumPassword, 0.7f);
                 numberOf_Medium_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(15);
             }
             else if (passwordScore == PasswordScore.Strong)
             {
+                zero.SetTrigger("Strong");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyStrongPassword, 0.7f);
                 numberOf_Strong_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(20);
             }
             else if (passwordScore == PasswordScore.VeryStrong)
             {
+                zero.SetTrigger("Strong");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyStrongPassword, 0.7f);
                 numberOf_Strong_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(30);
             }
@@ -172,26 +184,36 @@ public class GridScript : MonoBehaviour
             PasswordScore passwordScore = FindObjectOfType<PasswordStrengthChecker>().CheckStrength(password);
             if (passwordScore == PasswordScore.VeryWeak)
             {
+                zero.SetTrigger("Weak");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyWeakPassword, 0.7f);
                 numberOf_Weak_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(-15);
             }
             else if (passwordScore == PasswordScore.Weak)
             {
+                zero.SetTrigger("Weak");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyWeakPassword, 0.7f);
                 numberOf_Weak_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(-10);
             }
             else if (passwordScore == PasswordScore.Medium)
             {
+                zero.SetTrigger("Medium");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyMediumPassword, 0.7f);
                 numberOf_Medium_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(15);
             }
             else if (passwordScore == PasswordScore.Strong)
             {
+                zero.SetTrigger("Strong");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyStrongPassword, 0.7f);
                 numberOf_Strong_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(20);
             }
             else if (passwordScore == PasswordScore.VeryStrong)
             {
+                zero.SetTrigger("Strong");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destroyStrongPassword, 0.7f);
                 numberOf_Strong_Passwords++;
                 FindObjectOfType<Score>().UpdateScore(30);
             }

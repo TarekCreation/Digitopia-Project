@@ -27,7 +27,7 @@ public class PlayerTopDown : MonoBehaviour
 
     void Start()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         Joystick.gameObject.SetActive(false);
 #elif UNITY_ANDROID || UNITY_IOS
         Joystick.gameObject.SetActive(true); 
@@ -40,7 +40,7 @@ public class PlayerTopDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePosition - (Vector2)transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -97,12 +97,14 @@ public class PlayerTopDown : MonoBehaviour
     public void Shoot(float angle)
     {
         Instantiate(bulletPrefab, Gunpoint.position, Quaternion.Euler(new Vector3(0, 0, angle - 90f)));
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shoot,0.5f);
         ShootEffect.GetComponent<Animator>().Play("ShootEffect", -1, 0f);
     }
     IEnumerator CustomShoot()
     {
         while (isShooting)
         {
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shoot,0.5f);
             Instantiate(bulletPrefab, transform.position, Quaternion.Euler(new Vector3(0, 0, ShootingAngle - 90f)));
             ShootEffect.GetComponent<Animator>().Play("ShootEffect", -1, 0f); 
     
@@ -132,6 +134,7 @@ public class PlayerTopDown : MonoBehaviour
                 myCoroutine = StartCoroutine(PlaySliderAnimation(health - 1));
             }
             GetComponent<Animator>().Play("PlayerHit");
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.playerHit);
             if (enemyTransform != null)
             {
                 CanControl = false;
@@ -157,6 +160,7 @@ public class PlayerTopDown : MonoBehaviour
 
 
             GetComponent<Animator>().Play("PlayerDeath");
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.playerDie);
             if (enemyTransform != null)
             {
                 CanControl = false;

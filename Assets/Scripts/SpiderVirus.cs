@@ -37,6 +37,7 @@ public class SpiderVirus : MonoBehaviour
                 if (rnd < 2)
                 {
                     ParentAnim.SetTrigger("Shield");
+                    FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shieldSFX,0.2f);
                     itemIsShielded = true;
                     StartCoroutine(DeactivateShield());
                 }
@@ -64,6 +65,7 @@ public class SpiderVirus : MonoBehaviour
                     }
 
                     ParentAnim.SetTrigger("Go");
+                    FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.warning,0.35f);
                     isWaitingForANewVirus = false;
                     StartCoroutine(isWaitingForANewVirusTrue());
                 }
@@ -98,6 +100,7 @@ public class SpiderVirus : MonoBehaviour
             {
 
                 health -= 1f;
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyHit);
                 SpriteAnim.Play("EnemyHit2");
                 StartCoroutine(ReActivateControl());
 
@@ -105,6 +108,7 @@ public class SpiderVirus : MonoBehaviour
             }
             else
             {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyDie);
                 SpriteAnim.Play("EnemyHit2");
                 StartCoroutine(ReActivateControl());
                 StartCoroutine(Death());

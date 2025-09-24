@@ -12,6 +12,7 @@ public class Crab : MonoBehaviour
     // Start is called before the first frame update
     public void SpawnParticles()
     {
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.crabAppear,0.4f);
         Instantiate(particles, transform.position + new Vector3(0, -1, 0), Quaternion.identity);
     }
     public void ReColor(Color mycolor)
@@ -28,7 +29,7 @@ public class Crab : MonoBehaviour
             other.GetComponent<Bullet>().Die();
             if (health > 1)
             {
-
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyHit,0.5f);
                 health -= 1f;
                 StartCoroutine(Hit());
 
@@ -56,7 +57,7 @@ public class Crab : MonoBehaviour
 
         score.UpdateScore(2);
         FindObjectOfType<playerMovement>().IncreaseNumberOfKilledViruses();
-
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyDie,0.7f,2f);
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(0.15f);
         GetComponent<Collider2D>().enabled = false;

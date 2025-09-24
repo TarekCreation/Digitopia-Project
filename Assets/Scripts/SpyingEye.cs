@@ -42,6 +42,7 @@ public class SpyingEye : MonoBehaviour
         }
         else if (collision.tag == "CamLens")
         {
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.EnemyHitTarget,0.9f);
             FindObjectOfType<GUIscript>().EndGame(FindObjectOfType<Gun>().numberOfKilledSpies);
             FindObjectOfType<Gun>().gameObject.SetActive(false);
             FindObjectOfType<Bullets>().transform.parent.gameObject.SetActive(false);
@@ -52,6 +53,7 @@ public class SpyingEye : MonoBehaviour
     {
         if (health > 1)
         {
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hitTarget);
             if (myCoroutine == null)
             {
                 myCoroutine = StartCoroutine(PlaySliderAnimation(health - 1));
@@ -66,6 +68,7 @@ public class SpyingEye : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.eyeDie,0.6f);
             if (myCoroutine == null)
             {
                 StartCoroutine(PlayDeathAnimation(health - 1));

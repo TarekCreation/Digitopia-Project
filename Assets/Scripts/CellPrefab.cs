@@ -120,7 +120,7 @@ public class CellPrefab : MonoBehaviour
         else if (other.CompareTag("DestroyCells") && didPlace && CanBeDestroyed)
         {
             Instantiate(Particles, transform.position, Particles.transform.rotation);
-            
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.blockPop);
             Destroy(gameObject);
         }
     }

@@ -36,11 +36,29 @@ public class AlignDropDown : MonoBehaviour
     public void OnChangeValueArabic(int value)
     {
         EnglishDropDown.GetComponent<TMP_Dropdown>().value = value;
-        
+        if (value == 0)
+        {
+            QualitySettings.SetQualityLevel(0);
+        }else if (value == 1)
+        {
+            QualitySettings.SetQualityLevel(2);
+        }else if (value == 2)
+        {
+            QualitySettings.SetQualityLevel(4);
+        }
     }
     public void OnChangeValueEnglish(int value)
     {
-        
         ArabicDropDown.GetComponent<TMP_Dropdown>().value = value;
+        if (value == 0)
+        {
+            QualitySettings.SetQualityLevel(0);
+        }else if (value == 1)
+        {
+            QualitySettings.SetQualityLevel(2);
+        }else if (value == 2)
+        {
+            QualitySettings.SetQualityLevel(4);
+        }
     }
 }

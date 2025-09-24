@@ -43,7 +43,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: b1fe854000a5f824480bce3bd375475b, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f32ffcc7b720d8f4796f388a55d71c7b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -141,18 +141,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efe7fa6dc4059940880f2890effbdac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GO_Track_MainMenuMusic: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_StoryMusic: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame1: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame2: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame3: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame4: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame5: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame6: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame7: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_Track_Minigame8: {fileID: 8300000, guid: 7da2dc469de11024fa748305e038bfdf, type: 3}
-  GO_volume_MainMenuMusic: 1
-  GO_volume_StoryMusic: 1
-  GO_volume_Minigames: 1
+  GO_Track_MainMenuMusic: {fileID: 8300000, guid: f32ffcc7b720d8f4796f388a55d71c7b, type: 3}
+  GO_Track_Minigame1: {fileID: 8300000, guid: 958eb7324ae3d10498304cad41b47aec, type: 3}
+  GO_Track_Minigame2: {fileID: 8300000, guid: 0818baf4646d53b45a84ab88f5c629d9, type: 3}
+  GO_Track_Minigame3: {fileID: 8300000, guid: 1c58d8939472b194a83e0badd7f690a8, type: 3}
+  GO_Track_Minigame4: {fileID: 8300000, guid: bbe585de710c400479719ce194414c22, type: 3}
+  GO_Track_Minigame5: {fileID: 8300000, guid: 6261dc333dfa7a846a0e88137e1e4dcb, type: 3}
+  GO_Track_Minigame6: {fileID: 8300000, guid: 4b5d4e8ed0e173144b933d098b5d51d1, type: 3}
+  GO_Track_Minigame7: {fileID: 8300000, guid: 710330dfea68eeb4e8454b32d467886b, type: 3}
+  GO_volume_MainMenuMusic: 0.9
+  GO_volume_Minigame1: 0.7
+  GO_volume_Minigame2: 0.5
+  GO_volume_Minigame3: 0.9
+  GO_volume_Minigame4: 0.6
+  GO_volume_Minigame5: 0.7
+  GO_volume_Minigame6: 0.7
+  GO_volume_Minigame7: 0.8
   DecreaseTo_Volume: 0.2
   isDecreased: 0

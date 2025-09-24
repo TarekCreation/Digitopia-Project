@@ -78,6 +78,7 @@ public class CharacterController2D : MonoBehaviour
 	
 	public void Jump()
 	{
+		FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.jump,0.5f);
 		fJumpPressedRemember = fJumpPressedRememberTime;
 	}
 	public void NotJump()
@@ -97,9 +98,10 @@ public class CharacterController2D : MonoBehaviour
 		}
 
 		fJumpPressedRemember -= Time.deltaTime;
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         if (Input.GetButtonDown("Jump"))
 		{
+			FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.jump,0.5f);
 			fJumpPressedRemember = fJumpPressedRememberTime;
 		}
 

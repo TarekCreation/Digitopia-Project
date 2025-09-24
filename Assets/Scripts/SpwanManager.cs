@@ -97,6 +97,7 @@ public class SpwanManager : MonoBehaviour
                 
                 int Spawnindex = Random.Range(0, BossSpawnPoints.Length);
                 Instantiate(BossPrefab, BossSpawnPoints[Spawnindex].position, Quaternion.identity);
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyAppear2,0.3f);
                 AbossIsAlive = true;
                 return;
                 
@@ -124,22 +125,27 @@ public class SpwanManager : MonoBehaviour
             if (!AbossIsAlive)
             {
                 int index = Random.Range(0, spawnPoints.Count);
-        
+
                 Instantiate(enemyPrefabs[rndEnemy], spawnPoints[index].position, Quaternion.identity);
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyAppear2, 0.2f);
             }
-        }else if (currentDifficulty >= 50 && currentDifficulty < 100)
+        }
+        else if (currentDifficulty >= 50 && currentDifficulty < 100)
         {
             int index = Random.Range(0, spawnPoints.Count);
-        
+
             Instantiate(enemyPrefabs[rndEnemy], spawnPoints[index].position, Quaternion.identity);
-        }else
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyAppear2,0.2f);
+        }
+        else
         {
-            int numberOfEnemiesToSpawn = Random.Range(1, Mathf.RoundToInt(currentDifficulty/50));
+            int numberOfEnemiesToSpawn = Random.Range(1, Mathf.RoundToInt(currentDifficulty / 50));
             for (int i = 0; i < numberOfEnemiesToSpawn; i++)
             {
                 int index = Random.Range(0, spawnPoints.Count);
 
                 Instantiate(enemyPrefabs[rndEnemy], spawnPoints[index].position, Quaternion.identity);
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyAppear2,0.2f);
             }
         }
         

@@ -22,7 +22,7 @@ public class TutorialCanvas : MonoBehaviour
             arabicButton.SetActive(false);
             englishButton.SetActive(true);
         }
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         PCTutorial.SetActive(true);
 #elif UNITY_ANDROID || UNITY_IOS
         MobileTutorial.SetActive(true); 
@@ -35,29 +35,26 @@ public class TutorialCanvas : MonoBehaviour
         AudioClip audio = null;
         switch (MinigameSceneIndex)
         {
-            case 10: // Minigame 1
+            case 2: // Minigame 1
                 audio = Music.Track_Minigame1;
                 break;
-            case 11: // Minigame 2
+            case 3: // Minigame 2
                 audio = Music.Track_Minigame2;
                 break;
-            case 12: // Minigame 3
+            case 4: // Minigame 3
                 audio = Music.Track_Minigame3;
                 break;
-            case 13: // Minigame 4
+            case 5: // Minigame 4
                 audio = Music.Track_Minigame4;
                 break;
-            case 14: // Minigame 5
+            case 6: // Minigame 5
                 audio = Music.Track_Minigame5;
                 break;
-            case 15: // Minigame 6
+            case 7: // Minigame 6
                 audio = Music.Track_Minigame6;
                 break;
-            case 16: // Minigame 7
+            case 8: // Minigame 7
                 audio = Music.Track_Minigame7;
-                break;
-            case 17: // Minigame 8
-                audio = Music.Track_Minigame8;
                 break;
             default:
                 break;

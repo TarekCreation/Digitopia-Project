@@ -38,10 +38,12 @@ public class EmailChild : MonoBehaviour
         {
             if (isAScam)
             {
+                
                 FindObjectOfType<playerMovement>().Die();
             }
             else
             {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.pickUpEmail);
                 transform.parent.parent.GetComponent<Animator>().Play("EmailNormal");
                 transform.parent.parent.GetComponent<PhishingEmail>().GotDestroyed = true;
                 FindObjectOfType<Score>().UpdateScore(5);
@@ -53,7 +55,7 @@ public class EmailChild : MonoBehaviour
             transform.parent.parent.GetComponent<Animator>().Play("EmailNormal");
             transform.parent.parent.GetComponent<PhishingEmail>().GotDestroyed = true;
             Instantiate(destroyedVersion, transform.position, Quaternion.identity);
-            
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.destoryEmail,0.2f);
             if (isAScam)
             {
                 FindObjectOfType<Score>().UpdateScore(5);

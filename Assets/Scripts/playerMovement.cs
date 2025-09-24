@@ -36,7 +36,7 @@ public class playerMovement : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 		AndroidUI.SetActive(false);
 #elif UNITY_ANDROID || UNITY_IOS
         AndroidUI.SetActive(true); 
@@ -65,7 +65,7 @@ public class playerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
 		if (CanControl)
 		{
 			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
@@ -106,6 +106,7 @@ public class playerMovement : MonoBehaviour
 	{
 		if (CanControl && CanShootNormally)
 		{
+			FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shoot,0.4f);
 			if (transform.localScale.x > 0)
 			{
 				Instantiate(bulletPrefab, gunPoint.transform.position, Quaternion.Euler(new Vector3(0, 0, -90f)));
@@ -134,6 +135,7 @@ public class playerMovement : MonoBehaviour
 			CanShootUpwards = false;
 			VisualSprite.sprite = LookingUpSprite;
 			yield return new WaitForSeconds(0.15f);
+			FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shoot,0.4f,0.9f);
 			Instantiate(bulletPrefab, gunPoint_UP.transform.position, Quaternion.Euler(new Vector3(0, 0, 0f)));
 			yield return new WaitForSeconds(0.15f);
 			VisualSprite.sprite = NormalSprite;
@@ -156,10 +158,12 @@ public class playerMovement : MonoBehaviour
     }
 	public void Die()
 	{
+		
 		StartCoroutine(Death());
 	}
     IEnumerator Death()
     {
+		FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.playerDie);
 		rb.constraints = RigidbodyConstraints2D.FreezeAll;
 		Visual.SetActive(false);
         Instantiate(deathParticles, transform.position, Quaternion.identity);

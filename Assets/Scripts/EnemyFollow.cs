@@ -92,6 +92,7 @@ public class EnemyFollow : MonoBehaviour
 
                 health -= 1f;
                 GetComponent<Animator>().Play("EnemyHit");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyHit);
                 if (!cannotMove)
                 {
                     CanControl = false;
@@ -105,6 +106,23 @@ public class EnemyFollow : MonoBehaviour
             else
             {
                 GetComponent<Animator>().Play("EnemyHit");
+                switch (enemyType)
+                {
+                    case EnemyType.Virus1:
+                        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyDie,0.9f,2f);
+                        break;
+                    case EnemyType.Virus2:
+                        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyDie,0.9f,1f);
+                        break;
+                    case EnemyType.Virus3:
+                        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyDie,0.9f,3f);
+                        break;
+                    case EnemyType.Boss:
+                        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.enemyDie,0.9f,0.7f);
+                        
+                        break;
+                }
+                
                 if (!cannotMove)
                 {
                     CanControl = false;

@@ -23,6 +23,7 @@ public class ShieldCollider : MonoBehaviour
         {
             Instantiate(Broken, transform.position, Quaternion.identity);
             parentAnim.SetTrigger("Stop");
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shieldBreak,0.5f);
             FindObjectOfType<GUIscript>().EndGame(FindObjectOfType<playerMovement>().numberOfKilledViruses, FindObjectOfType<playerMovement>().numberOfLostItems);
             FindObjectOfType<playerMovement>().CanControl = false;
         }

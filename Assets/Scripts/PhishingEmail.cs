@@ -32,6 +32,13 @@ public class PhishingEmail : MonoBehaviour
             }
             emails[currentIndex].SetActive(true);
             emails[currentIndex].GetComponent<EmailChild>().UpdateContent();
+            if (emails[currentIndex].GetComponent<EmailChild>().isAScam)
+            {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.badEmail,0.2f);
+            }else
+            {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.goodEmail,0.4f);
+            }
             yield return new WaitForSeconds(Random.Range(2, waitingTime));
             anim.Play("DropDown");
             yield return new WaitForSeconds(Random.Range(3 + MinwaitingTimeHanging, 3 + MaxWaitingTimeHanging));

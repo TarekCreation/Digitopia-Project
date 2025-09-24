@@ -601,6 +601,18 @@ PrefabInstance:
       propertyPath: dialogues.Array.data[2].EnglishVoiceLine
       value: 
       objectReference: {fileID: 8300000, guid: fa0f0e1c8d1b7a74e8cc2fd55cbf724f, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[0].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: bd021c719060a74449459341e241bce8, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[1].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: b0de9993437d6f6428a64dc70ead33ba, type: 3}
+    - target: {fileID: 3411418610197870907, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
+      propertyPath: dialogues.Array.data[2].OptionalBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 097e996223f098340b899e3d257b67b2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471eb2758995f3c42b89031bf3999107, type: 3}
 --- !u!1001 &7591618011768180826

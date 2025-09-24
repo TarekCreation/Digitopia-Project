@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed = 20f;
     public float lifetime = 2f;
     public GameObject hitEffect;
+    public float effectVolume = 0.3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour
     public void Die()
     {
         Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.explosion,effectVolume);
         Instantiate(hitEffect, transform.position, rotation);
         Destroy(gameObject);
     }

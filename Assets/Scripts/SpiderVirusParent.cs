@@ -7,7 +7,7 @@ public class SpiderVirusParent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,5 +19,10 @@ public class SpiderVirusParent : MonoBehaviour
             score.UpdateScore(-1);
         }
         FindObjectOfType<playerMovement>().IncreaseNumberOfLostItems();
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.Reload,0.7f);
+    }
+    public void PlayPickUpSound()
+    {
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.pickupItem,0.5f);
     }
 }

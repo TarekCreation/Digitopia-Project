@@ -11,7 +11,7 @@ public class topDownMovement : MonoBehaviour
     public FixedJoystick Joystick;
     
     
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
     void Start()
     {
         Joystick.gameObject.SetActive(false); 

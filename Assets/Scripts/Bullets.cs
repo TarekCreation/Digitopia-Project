@@ -17,7 +17,7 @@ public class Bullets : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         ReloadButton.SetActive(false);
 #elif UNITY_ANDROID || UNITY_IOS
         ReloadButton.SetActive(true);
@@ -41,6 +41,7 @@ public class Bullets : MonoBehaviour
     }
     public void Reload()
     {
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.Reloading,0.9f);
         currentNumberOfBullets = numberOfBullets;
         ReloadGO.SetActive(false);
         ReloadMobile.SetActive(false);
@@ -57,6 +58,7 @@ public class Bullets : MonoBehaviour
             currentNumberOfBullets--;
             didShoot = true;
             Instantiate(BulletPrefab, pos, Quaternion.identity);
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shootGun);
             foreach (var item in bullets)
             {
                 item.color = OffColor;
@@ -67,12 +69,15 @@ public class Bullets : MonoBehaviour
             }
             if (currentNumberOfBullets == 0)
             {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
                 ReloadGO.SetActive(true);
 #elif UNITY_ANDROID || UNITY_IOS
                 ReloadMobile.SetActive(true);
 #endif
             }
+        }else
+        {
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.Reload);
         }
         return didShoot;
     }

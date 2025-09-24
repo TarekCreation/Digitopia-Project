@@ -38,11 +38,23 @@ public class Hammer : MonoBehaviour
             float targetSize = 1 + (Combo - 2) * 0.2f;
             if (targetSize <= ComboMaxSize)
             {
+                
                 comboAnimator.transform.localScale = new Vector3(targetSize, targetSize, targetSize);
             }
             else
-            {
+            {   
                 comboAnimator.transform.localScale = new Vector3(ComboMaxSize, ComboMaxSize, ComboMaxSize);
+            }
+            float targetFloatPitch = targetSize - 0.5f;
+            if (targetFloatPitch < -0.5f)
+            {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.comboLow,1,-0.5f);
+            }else if (targetFloatPitch > 3)
+            {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.comboLow,1,3);
+            }else
+            {
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.comboLow,1,targetFloatPitch);
             }
             comboAnimator.Play("ComboVisual", -1, 0f);
             comboText.text = "x" + Combo.ToString();
@@ -69,13 +81,14 @@ public class Hammer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = movingPosition + offset;
         if (Input.GetMouseButtonDown(0) && !isMovingHammer)
         {
             isMovingHammer = true;
             animator.Play("HammerHit");
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
         }
 #elif UNITY_ANDROID || UNITY_IOS
         if (Input.touchCount > 0)
@@ -90,6 +103,7 @@ public class Hammer : MonoBehaviour
                 {
                     isMovingHammer = true;
                     animator.Play("HammerHit");
+                    FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
                 }
             }
         }

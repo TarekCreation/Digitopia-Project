@@ -19,12 +19,13 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
+#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
         movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = movingPosition;
         if (Input.GetMouseButtonDown(0))
         {
             animator.Play("Gun", -1, 0);
+            
             FindObjectOfType<Bullets>().Shoot(transform.position);
         }
 #elif UNITY_ANDROID || UNITY_IOS

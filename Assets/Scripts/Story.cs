@@ -286,10 +286,7 @@ public class Story : MonoBehaviour
         {
             prev_button_A1.interactable = true;
             prev_button_A2.interactable = true;
-            if (isFinished)
-            {
-                Debug.Log("is Finished");
-            }
+            
             CloseStory();
         }else if (!isArabic && currentIndex < dialogues.Length - 1)
         {

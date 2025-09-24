@@ -16,6 +16,7 @@ public class Bat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.batAppear,1f);
         if (isShooting)
         {
             StartCoroutine(Shoot());
@@ -30,6 +31,7 @@ public class Bat : MonoBehaviour
             Vector3 direction = (Vector3.zero - transform.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Instantiate(Bullet, shootingPos.position, Quaternion.Euler(new Vector3(0, 0, angle - 90f)));
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.batShoot,1f);
             if (TimeBetweenShooting > 8)
             {
                 TimeBetweenShooting -= 0.5f;
@@ -60,6 +62,7 @@ public class Bat : MonoBehaviour
     {
         GetComponent<Collider2D>().enabled = false;
         FindObjectOfType<Score>().UpdateScore(value);
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.shieldHitBat,1f);
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject);

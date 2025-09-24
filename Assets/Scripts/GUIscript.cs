@@ -77,6 +77,7 @@ public class GUIscript : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         Time.timeScale = 0;
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.endLevel);
         gameOverScreen.gameObject.SetActive(true);
         gameOverScreen.UpdateData(_1Stat,_2Stat,_3Stat,_4Stat);
     }

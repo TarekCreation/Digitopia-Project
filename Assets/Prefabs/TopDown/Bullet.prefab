@@ -157,6 +157,7 @@ MonoBehaviour:
   speed: 27
   lifetime: 2
   hitEffect: {fileID: 7033571651502460910, guid: 2226b38da2724004e841a691df4dc7e4, type: 3}
+  effectVolume: 0.2
 --- !u!70 &2176389732821585105
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

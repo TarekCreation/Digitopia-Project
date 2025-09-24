@@ -183,12 +183,14 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
     {
 #if UNITY_STANDALONE || UNITY_WEBGL || UNITY_EDITOR
         if (isLocked) return;
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.pickUpBlocks,0.8f);
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(eventData.position);
         offset = transform.position - new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z);
 #elif UNITY_IOS || UNITY_ANDROID
         if (isLocked) return;
         if (Input.touchCount > 0)
         {
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.pickUpBlocks,0.8f);
             Vector3 touchWorldPos = mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
             offset = transform.position - new Vector3(touchWorldPos.x, touchWorldPos.y, transform.position.z);
         }
@@ -240,6 +242,7 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
         if (!IsInBounds)
         {
             transform.position = homePosition;
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.dropBlocks_Invalid);
         }
         else
         {
@@ -261,6 +264,7 @@ public class Movable : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointe
 
     void Place()
     {
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.dropBlocks);
         if (cellPrefabs.Count > 3)
         {
             Score score = FindObjectOfType<Score>();
