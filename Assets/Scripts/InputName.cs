@@ -53,9 +53,4 @@ public class InputName : MonoBehaviour
             tMPRO.ValueChanged(Myname);
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

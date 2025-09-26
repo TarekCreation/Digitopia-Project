@@ -19,9 +19,4 @@ public class DelayAnimation : MonoBehaviour
         anim.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -53,7 +53,6 @@ public class LeaderboardFiller : MonoBehaviour
                 new AddPlayerScoreOptions { Metadata = metadata }
             );
 
-            Debug.Log($"Added {exampleNames[i]} with score {score}");
         }
     }
 }

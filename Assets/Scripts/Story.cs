@@ -63,7 +63,6 @@ public class Story : MonoBehaviour
     private string currentCharacterName_English;
     private string currentCharacterName_Arabic;
     private Sprite currentSprite;
-    public bool isFinished = false;
     public AudioSource VoiceLineReader;
     
     
@@ -94,7 +93,7 @@ public class Story : MonoBehaviour
                     ArabicGO.SetActive(false);
                     Arabic_Narrator_GO.SetActive(true);
                     next_button_A1.ValueChanged("أنهي");
-                    isFinished = true;
+                    
                     prev_button_A1.interactable = false;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -104,7 +103,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_A2.ValueChanged("أنهي");
-                    isFinished = true;
+                    
                     prev_button_A2.interactable = false;
                     UpdateItems();
 
@@ -120,7 +119,7 @@ public class Story : MonoBehaviour
                     ArabicGO.SetActive(false);
                     Arabic_Narrator_GO.SetActive(true);
                     next_button_A1.ValueChanged("التالي");
-                    isFinished = false; 
+                     
                     UpdateBackground();
                     prev_button_A1.interactable = false;
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -131,7 +130,7 @@ public class Story : MonoBehaviour
                     CheckCharacterIndex(dialogues[currentIndex].character);
 
                     next_button_A2.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A2.interactable = false;
                     UpdateItems();
                     NameValue_Arabic.ArabicText = currentCharacterName_Arabic;
@@ -151,7 +150,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(true);
                     UpdateBackground();
                     next_button_E1.ValueChanged("Finish");
-                    isFinished = true;
+                    
                     prev_button_E1.interactable = false;
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
                 } else
@@ -160,7 +159,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Finish");
-                    isFinished = true;
+                    
                     prev_button_E2.interactable = false;
                     UpdateItems();
                     NameValue_English.text = currentCharacterName_English;
@@ -175,7 +174,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(true);
 
                     next_button_E1.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E1.interactable = false;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
@@ -185,7 +184,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Next");
-                    isFinished = false;
+                    
 
                     prev_button_E2.interactable = false;
                     UpdateItems();
@@ -209,7 +208,7 @@ public class Story : MonoBehaviour
                     ArabicGO.SetActive(false);
                     Arabic_Narrator_GO.SetActive(true);
                     next_button_A1.ValueChanged("أنهي");
-                    isFinished = true;
+                    
                     prev_button_A1.interactable = true;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -220,7 +219,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_A2.ValueChanged("أنهي");
-                    isFinished = true;
+                    
                     prev_button_A2.interactable = true;
                     UpdateItems();
                     NameValue_Arabic.ArabicText = currentCharacterName_Arabic;
@@ -236,7 +235,7 @@ public class Story : MonoBehaviour
                     ArabicGO.SetActive(false);
                     Arabic_Narrator_GO.SetActive(true);
                     next_button_A1.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A1.interactable = true;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -246,7 +245,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_A2.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A2.interactable = true;
                     UpdateItems();
                     NameValue_Arabic.ArabicText = currentCharacterName_Arabic;
@@ -262,7 +261,7 @@ public class Story : MonoBehaviour
                     ArabicGO.SetActive(false);
                     Arabic_Narrator_GO.SetActive(true);
                     next_button_A1.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A1.interactable = false;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -272,7 +271,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_A2.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A2.interactable = false;
                     UpdateItems();
                     NameValue_Arabic.ArabicText = currentCharacterName_Arabic;
@@ -298,7 +297,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(true);
 
                     next_button_E1.ValueChanged("Finish");
-                    isFinished = true;
+                    
                     prev_button_E1.interactable = true;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
@@ -308,7 +307,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Finish");
-                    isFinished = true;
+                    
                     prev_button_E2.interactable = true;
                     UpdateItems();
                     NameValue_English.text = currentCharacterName_English;
@@ -322,7 +321,7 @@ public class Story : MonoBehaviour
                     EnglishGO.SetActive(false);
                     English_Narrator_GO.SetActive(true);
                     next_button_E1.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E1.interactable = true;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
@@ -332,7 +331,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E2.interactable = true;
                     UpdateItems();
                     NameValue_English.text = currentCharacterName_English;
@@ -346,7 +345,7 @@ public class Story : MonoBehaviour
                     EnglishGO.SetActive(false);
                     English_Narrator_GO.SetActive(true);
                     next_button_E1.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E1.interactable = false;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
@@ -356,7 +355,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E2.interactable = false;
                     UpdateItems();
                     NameValue_English.text = currentCharacterName_English;
@@ -368,10 +367,7 @@ public class Story : MonoBehaviour
         {
             prev_button_A1.interactable = true;
             prev_button_A2.interactable = true;
-            if (isFinished)
-            {
-                Debug.Log("is Finished");
-            }
+            
             CloseStory();
         }
     }
@@ -390,7 +386,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(true);
                     
                     next_button_A1.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A1.interactable = false;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -400,7 +396,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_A2.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A2.interactable = false;
                     UpdateItems();
                     NameValue_Arabic.ArabicText = currentCharacterName_Arabic;
@@ -417,7 +413,7 @@ public class Story : MonoBehaviour
                     ArabicGO.SetActive(false);
                     Arabic_Narrator_GO.SetActive(true);
                     next_button_A1.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A1.interactable = true;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInArabic, Narrator_MessageValue_Arabic, dialogues[currentIndex].ArabicVoiceLine));
@@ -427,7 +423,7 @@ public class Story : MonoBehaviour
                     Arabic_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_A2.ValueChanged("التالي");
-                    isFinished = false;
+                    
                     prev_button_A2.interactable = true;
                     UpdateItems();
                     NameValue_Arabic.ArabicText = currentCharacterName_Arabic;
@@ -447,7 +443,7 @@ public class Story : MonoBehaviour
                     EnglishGO.SetActive(false);
                     English_Narrator_GO.SetActive(true);
                     next_button_E1.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E1.interactable = false;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
@@ -457,7 +453,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E2.interactable = false;
                     UpdateItems();
                     NameValue_English.text = currentCharacterName_English;
@@ -472,7 +468,7 @@ public class Story : MonoBehaviour
                     EnglishGO.SetActive(false);
                     English_Narrator_GO.SetActive(true);
                     next_button_E1.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E1.interactable = true;
                     UpdateBackground();
                     StartCoroutine(AddCharactersText(dialogues[currentIndex].TextInEnglish, Narrator_MessageValue_English, dialogues[currentIndex].EnglishVoiceLine));
@@ -482,7 +478,7 @@ public class Story : MonoBehaviour
                     English_Narrator_GO.SetActive(false);
                     CheckCharacterIndex(dialogues[currentIndex].character);
                     next_button_E2.ValueChanged("Next");
-                    isFinished = false;
+                    
                     prev_button_E2.interactable = true;
                     UpdateItems();
                     NameValue_English.text = currentCharacterName_English;

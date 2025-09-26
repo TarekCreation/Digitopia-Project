@@ -81,22 +81,13 @@ public class Hammer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-        movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = movingPosition + offset;
-        if (Input.GetMouseButtonDown(0) && !isMovingHammer)
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
         {
-            isMovingHammer = true;
-            animator.Play("HammerHit");
-            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
-        }
-#elif UNITY_ANDROID || UNITY_IOS
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector2 touchPosition = touch.position;
-            if (touch.phase == TouchPhase.Began)
+            if (Input.touchCount > 0)
             {
+                Touch touch = Input.GetTouch(0);
+                Vector2 touchPosition = touch.position;
                 movingPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
                 transform.position = movingPosition + offset;
                 if (!isMovingHammer)
@@ -105,8 +96,43 @@ public class Hammer : MonoBehaviour
                     animator.Play("HammerHit");
                     FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
                 }
+                
+            }
+        }else
+        {
+            movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = movingPosition + offset;
+            if (Input.GetMouseButtonDown(0) && !isMovingHammer)
+            {
+                isMovingHammer = true;
+                animator.Play("HammerHit");
+                FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
             }
         }
+#elif UNITY_ANDROID || UNITY_IOS
+    if (Input.touchCount > 0)
+    {
+        Touch touch = Input.GetTouch(0);
+        Vector2 touchPosition = touch.position;
+        movingPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
+        transform.position = movingPosition + offset;
+        if (!isMovingHammer)
+        {
+            isMovingHammer = true;
+            animator.Play("HammerHit");
+            FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
+        }
+        
+    }
+#else
+    movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    transform.position = movingPosition + offset;
+    if (Input.GetMouseButtonDown(0) && !isMovingHammer)
+    {
+        isMovingHammer = true;
+        animator.Play("HammerHit");
+        FindObjectOfType<SFXManager>().PlaySound(SFXManager.Instance.hammerPunch);
+    }
 #endif
     }
 }

@@ -49,7 +49,6 @@ public class VirusPop : MonoBehaviour
         isDying = false;
         virusColor.SetRandomVirusType();
     }
-    // Update is called once per frame
     public void PopUp()
     {
         if (shieldPercentage < 11)

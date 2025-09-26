@@ -17,10 +17,4 @@ public class SpawnPoints : MonoBehaviour
             block.GetComponentInChildren<Movable>().isLocked = false;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

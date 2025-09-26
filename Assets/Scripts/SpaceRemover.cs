@@ -29,7 +29,5 @@ public class SpaceRemover : MonoBehaviour
             _meassage.GetComponent<Animator>().Play("Message");
         }
         
-        //inputField.text = inputField.text.Replace("!", "");
-        //inputField.text = inputField.text.Replace("^", "");
     }
 }

@@ -17,10 +17,15 @@ public class Bullets : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
+#if UNITY_WEBGL
+    if (Application.isMobilePlatform)
+        ReloadButton.SetActive(true);
+    else
         ReloadButton.SetActive(false);
 #elif UNITY_ANDROID || UNITY_IOS
-        ReloadButton.SetActive(true);
+    ReloadButton.SetActive(true);
+#else
+    ReloadButton.SetActive(false);
 #endif
         currentNumberOfBullets = numberOfBullets;
         ReloadGO.SetActive(false);
@@ -69,10 +74,15 @@ public class Bullets : MonoBehaviour
             }
             if (currentNumberOfBullets == 0)
             {
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-                ReloadGO.SetActive(true);
+#if UNITY_WEBGL
+                if (Application.isMobilePlatform)
+                    ReloadMobile.SetActive(true);
+                else
+                    ReloadGO.SetActive(true);
 #elif UNITY_ANDROID || UNITY_IOS
                 ReloadMobile.SetActive(true);
+#else
+                ReloadGO.SetActive(true);
 #endif
             }
         }else

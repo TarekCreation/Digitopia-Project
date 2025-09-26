@@ -71,9 +71,4 @@ public class PhishingEmail : MonoBehaviour
         
     }
     
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

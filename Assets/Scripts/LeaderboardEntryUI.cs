@@ -17,7 +17,6 @@ public class LeaderboardEntryUI : MonoBehaviour
         rankImage.sprite = rank;
         countryImage.sprite = country;
         nameText.GetComponent<FixerForOnlyArabic>().fixedText = playerName;
-        //nameText.GetComponent<FixerForOnlyArabic>().FixTextForUI();
         score.text = scoreVal.ToString();
         rankText.text = "#" + rankNumber.ToString();
     }

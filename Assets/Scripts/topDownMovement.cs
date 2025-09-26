@@ -9,29 +9,44 @@ public class topDownMovement : MonoBehaviour
     Vector2 movement;
 
     public FixedJoystick Joystick;
-    
-    
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
     void Start()
     {
-        Joystick.gameObject.SetActive(false); 
-    }
-    void Update()
-    {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-    }
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
+        {
+            Joystick.gameObject.SetActive(true); 
+        }else
+        {
+            Joystick.gameObject.SetActive(false); 
+        }
 #elif UNITY_ANDROID || UNITY_IOS
-    void Start()
-    {
-        Joystick.gameObject.SetActive(true); 
+    Joystick.gameObject.SetActive(true); 
+#else
+    Joystick.gameObject.SetActive(false); 
+#endif
+        
     }
     void Update()
     {
-        movement.x = Joystick.Horizontal;
-        movement.y = Joystick.Vertical;
-    }
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
+        {
+            movement.x = Joystick.Horizontal;
+            movement.y = Joystick.Vertical;
+        }
+        else
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+#elif UNITY_ANDROID || UNITY_IOS
+    movement.x = Joystick.Horizontal;
+    movement.y = Joystick.Vertical;
+#else
+    movement.x = Input.GetAxisRaw("Horizontal");
+    movement.y = Input.GetAxisRaw("Vertical");
 #endif
+    }
     void FixedUpdate()
     {
         if (GetComponent<PlayerTopDown>().CanControl)

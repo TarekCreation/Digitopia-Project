@@ -272,38 +272,7 @@ public class GridScript : MonoBehaviour
             return null;
         }
     }
-    // public void PlaceBlocks(List<CellPrefab> cellPrefabs, Movable blocks)
-    // {
-        
-    //     foreach (List<int> index in blocks.Indexes)
-    //     {
-
-    //         int targetCol = cell.Column + index[0];
-    //         int targetRow = cell.Row + index[1];
-
-    //         if (targetCol < 1 || targetCol > 9 || targetRow < 1 || targetRow > 9)
-    //         {
-    //             CanPlaceTheseBlocks = false;
-    //             break;
-    //         }
-    //         else
-    //         {
-
-    //             BlockPuzzleCell targetCell = cells.Find(c => c.Row == targetRow && c.Column == targetCol);
-
-
-    //             if (targetCell.IsOccupied)
-    //             {
-    //                 CanPlaceTheseBlocks = false;
-    //                 break;
-    //             }else
-    //             {
-                    
-    //             }
-    //         }
-    //     }
-        
-    // }
+    
     public void CheckIfCanPlace(Movable blocks)
     {
         bool ThereIsAtLeastOnePossiblePlace = false;

@@ -36,10 +36,18 @@ public class playerMovement : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-		AndroidUI.SetActive(false);
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
+        {
+            AndroidUI.SetActive(true); 
+        }else
+        {
+            AndroidUI.SetActive(false);
+        }
 #elif UNITY_ANDROID || UNITY_IOS
-        AndroidUI.SetActive(true); 
+    AndroidUI.SetActive(true); 
+#else
+    AndroidUI.SetActive(false);
 #endif
 	}
 	public void IncreaseNumberOfKilledViruses()
@@ -65,32 +73,56 @@ public class playerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-		if (CanControl)
-		{
-			horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-			if (Input.GetButtonDown("Jump"))
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
+        {
+            if (CanControl)
 			{
-				jump = true;
+				horizontalMove = Joystick.Horizontal * runSpeed;
 			}
-		}
-		if (Input.GetMouseButtonDown(0))
-		{
-			Shoot();
-		}
-		if (Input.GetMouseButtonDown(1) && isMinigame5)
-		{
-			ShootUpwards();
-		}
-		
-
-
+        }else
+        {
+            if (CanControl)
+			{
+				horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+				if (Input.GetButtonDown("Jump"))
+				{
+					jump = true;
+				}
+			}
+			if (Input.GetMouseButtonDown(0))
+			{
+				Shoot();
+			}
+			if (Input.GetMouseButtonDown(1) && isMinigame5)
+			{
+				ShootUpwards();
+			}
+        }
 #elif UNITY_ANDROID || UNITY_IOS
-        if (CanControl)
+    if (CanControl)
+	{
+		horizontalMove = Joystick.Horizontal * runSpeed;
+	}
+#else
+    if (CanControl)
+	{
+		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+		if (Input.GetButtonDown("Jump"))
 		{
-			horizontalMove = Joystick.Horizontal * runSpeed;
+			jump = true;
 		}
+	}
+	if (Input.GetMouseButtonDown(0))
+	{
+		Shoot();
+	}
+	if (Input.GetMouseButtonDown(1) && isMinigame5)
+	{
+		ShootUpwards();
+	}
 #endif
+
 
 
 

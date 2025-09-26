@@ -22,10 +22,18 @@ public class TutorialCanvas : MonoBehaviour
             arabicButton.SetActive(false);
             englishButton.SetActive(true);
         }
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-        PCTutorial.SetActive(true);
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
+        {
+            MobileTutorial.SetActive(true); 
+        }else
+        {
+            PCTutorial.SetActive(true);
+        }
 #elif UNITY_ANDROID || UNITY_IOS
-        MobileTutorial.SetActive(true); 
+    MobileTutorial.SetActive(true); 
+#else
+    PCTutorial.SetActive(true);
 #endif
     }
 

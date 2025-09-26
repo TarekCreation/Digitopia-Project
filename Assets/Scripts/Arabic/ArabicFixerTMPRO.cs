@@ -9,7 +9,6 @@ public class ArabicFixerTMPRO : MonoBehaviour
     
 
     
-    private string language;
     public string ArabicText;
     public string EnglishText;
     public TMP_FontAsset ArabicTextAsset;

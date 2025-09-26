@@ -32,10 +32,10 @@ public class MusicGO : MonoBehaviour
     private float GO_volume_MainMenuMusic = 0.9f;
     private float GO_volume_Minigame1 = 0.7f;
     private float GO_volume_Minigame2 = 0.5f;
-    private float GO_volume_Minigame3 = 0.9f;
+    private float GO_volume_Minigame3 = 1f;
     private float GO_volume_Minigame4 = 0.6f;
     private float GO_volume_Minigame5 = 0.7f;
-    private float GO_volume_Minigame6 = 0.7f;
+    private float GO_volume_Minigame6 = 0.6f;
     private float GO_volume_Minigame7 = 0.8f;
     private float DecreaseTo_Volume = 0.2f;
     public bool isDecreased = false;

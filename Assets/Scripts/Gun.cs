@@ -19,28 +19,55 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-        movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = movingPosition;
-        if (Input.GetMouseButtonDown(0))
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
         {
-            animator.Play("Gun", -1, 0);
-            
-            FindObjectOfType<Bullets>().Shoot(transform.position);
-        }
-#elif UNITY_ANDROID || UNITY_IOS
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector2 touchPosition = touch.position;
-            if (touch.phase == TouchPhase.Began)
+            if (Input.touchCount > 0)
             {
-                movingPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
-                transform.position = movingPosition;
+                Touch touch = Input.GetTouch(0);
+                Vector2 touchPosition = touch.position;
+                if (touch.phase == TouchPhase.Began)
+                {
+                    movingPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
+                    transform.position = movingPosition;
+                    animator.Play("Gun", -1, 0);
+                    FindObjectOfType<Bullets>().Shoot(transform.position);
+                }
+            }
+        }else
+        {
+            movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            transform.position = movingPosition;
+            if (Input.GetMouseButtonDown(0))
+            {
                 animator.Play("Gun", -1, 0);
+                
                 FindObjectOfType<Bullets>().Shoot(transform.position);
             }
         }
+#elif UNITY_ANDROID || UNITY_IOS
+    if (Input.touchCount > 0)
+    {
+        Touch touch = Input.GetTouch(0);
+        Vector2 touchPosition = touch.position;
+        if (touch.phase == TouchPhase.Began)
+        {
+            movingPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, Camera.main.nearClipPlane));
+            transform.position = movingPosition;
+            animator.Play("Gun", -1, 0);
+            FindObjectOfType<Bullets>().Shoot(transform.position);
+        }
+    }
+#else
+    movingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    transform.position = movingPosition;
+    if (Input.GetMouseButtonDown(0))
+    {
+        animator.Play("Gun", -1, 0);
+        
+        FindObjectOfType<Bullets>().Shoot(transform.position);
+    }
 #endif
+
     }
 }

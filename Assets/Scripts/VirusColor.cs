@@ -58,9 +58,4 @@ public class VirusColor : MonoBehaviour
         virusType = (VirusType)randomIndex;
         SetVisual();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

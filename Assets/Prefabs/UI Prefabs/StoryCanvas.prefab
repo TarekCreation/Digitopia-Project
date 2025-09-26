@@ -702,7 +702,6 @@ MonoBehaviour:
   prev_button_E2: {fileID: 6813412560542055571}
   next_button_E2: {fileID: 6813412559398355567}
   currentIndex: 0
-  isFinished: 0
   VoiceLineReader: {fileID: 0}
 --- !u!1 &2013031788922687174
 GameObject:
@@ -1672,7 +1671,7 @@ GameObject:
   - component: {fileID: 2711417877811796658}
   - component: {fileID: 2711417877811796659}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: Blob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

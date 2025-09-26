@@ -63,9 +63,4 @@ public class Crab : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

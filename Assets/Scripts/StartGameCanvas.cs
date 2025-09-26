@@ -17,10 +17,4 @@ public class StartGameCanvas : MonoBehaviour
             FindObjectOfType<SceneLoader>().LoadMenuAsynchronously();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

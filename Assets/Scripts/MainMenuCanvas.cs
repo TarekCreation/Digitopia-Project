@@ -147,7 +147,6 @@ public class MainMenuCanvas : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
         Application.Quit();
-        Debug.Log("quit");
     }
 
     

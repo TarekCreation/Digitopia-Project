@@ -5,10 +5,7 @@ using UnityEngine;
 public class TechBackground : MonoBehaviour
 {
     public List<BackgroundLightColor> backgroundLightColors;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    
 
     // Update is called once per frame
     public void CurrentPointReachedDestination(int index)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FPSLimiter : MonoBehaviour
 {
     public static FPSLimiter Instance { get; private set; }
-    public int targetFPS = 160; // Set your desired target FPS here
+    public int targetFPS = 160;
 
     private void Awake()
     {

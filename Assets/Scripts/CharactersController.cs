@@ -43,11 +43,6 @@ public class CharactersController : MonoBehaviour
         return SpecialCharacters[index];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
 public enum CharacterType
 {

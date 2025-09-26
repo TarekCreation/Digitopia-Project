@@ -57,9 +57,4 @@ public class CountryButtonPick : MonoBehaviour
         SelectMenu.SetActive(false);
         FindObjectOfType<CountryPicked>().UpdateFlag();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

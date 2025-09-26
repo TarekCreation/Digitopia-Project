@@ -11,7 +11,15 @@ public class Score : MonoBehaviour
     void Start()
     {
         scoreText.ValueChanged_PlusArabic("Score: " + score.ToString(), "النقاط: " + score.ToString());
+        UpdateScore(0);
+        StartCoroutine(WaitAndUpdate());
 
+    }
+    IEnumerator WaitAndUpdate()
+    {
+        yield return new WaitForSeconds(1f);
+        scoreText.ValueChanged_PlusArabic("Score: " + score.ToString(), "النقاط: " + score.ToString());
+        UpdateScore(0);
     }
     // Start is called before the first frame update
     public void UpdateScore(int value)
@@ -25,9 +33,9 @@ public class Score : MonoBehaviour
             }
             scoreText.ValueChanged_PlusArabic("Score: " + score.ToString(), "النقاط: " + score.ToString());
         }
-        
-        
-        
+
+
+
     }
 
 

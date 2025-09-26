@@ -75,12 +75,7 @@ public class SpiderVirus : MonoBehaviour
         }
         
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
+    
     IEnumerator DeactivateShield()
     {
         yield return new WaitForSeconds(16f);

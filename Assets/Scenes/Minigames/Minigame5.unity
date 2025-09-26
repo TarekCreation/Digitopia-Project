@@ -3605,7 +3605,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   m_GroundCheck: {fileID: 779662914}
-  m_CeilingCheck: {fileID: 1391022361}
   fJumpPressedRememberTime: 0.2
   fGroundedRememberTime: 0.1
   fCutJumpHeight: 0.5

@@ -27,10 +27,15 @@ public class PlayerTopDown : MonoBehaviour
 
     void Start()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
+#if UNITY_WEBGL
+    if (Application.isMobilePlatform)
+        Joystick.gameObject.SetActive(true);
+    else
         Joystick.gameObject.SetActive(false);
 #elif UNITY_ANDROID || UNITY_IOS
-        Joystick.gameObject.SetActive(true); 
+    Joystick.gameObject.SetActive(true);
+#else
+    Joystick.gameObject.SetActive(false);
 #endif
         rb = GetComponent<Rigidbody2D>();
         healthSlider.maxValue = health;
@@ -40,24 +45,60 @@ public class PlayerTopDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBGL
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - (Vector2)transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle -90f));
-        Visual.transform.rotation = quaternion;
-        if (Input.GetMouseButtonDown(0))
+#if UNITY_WEBGL
+        if (Application.isMobilePlatform)
         {
-            if (CanShoot)
+            Vector2 direction = new Vector2(Joystick.Horizontal, Joystick.Vertical);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
+            Visual.transform.rotation = quaternion;
+            if (direction.magnitude > 0.5f)
             {
-                Shoot(angle);
-                CanShoot = false;
-                StartCoroutine(ResetShoot());
+                ShootingAngle = angle;
+                if (!isShooting)
+                {
+
+                    isShooting = true;
+                    if (shootingCoroutine == null)
+                    {
+                        shootingCoroutine = StartCoroutine(CustomShoot());
+
+                    }
+                    else
+                    {
+                        StopCoroutine(shootingCoroutine);
+                        shootingCoroutine = StartCoroutine(CustomShoot());
+                    }
+
+                }
+
             }
-            
+            else
+            {
+                isShooting = false;
+            }
         }
+        else
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 direction = mousePosition - (Vector2)transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle -90f));
+            Visual.transform.rotation = quaternion;
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (CanShoot)
+                {
+                    Shoot(angle);
+                    CanShoot = false;
+                    StartCoroutine(ResetShoot());
+                }
+                
+            }
+        }
+        
 #elif UNITY_ANDROID || UNITY_IOS
-        Vector2 direction = new Vector2(Joystick.Horizontal, Joystick.Vertical);
+    Vector2 direction = new Vector2(Joystick.Horizontal, Joystick.Vertical);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle -90f));
         Visual.transform.rotation = quaternion;
@@ -84,7 +125,24 @@ public class PlayerTopDown : MonoBehaviour
         {
             isShooting = false;
         }
+#else
+    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = mousePosition - (Vector2)transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion quaternion = Quaternion.Euler(new Vector3(0, 0, angle -90f));
+        Visual.transform.rotation = quaternion;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (CanShoot)
+            {
+                Shoot(angle);
+                CanShoot = false;
+                StartCoroutine(ResetShoot());
+            }
+            
+        }
 #endif
+
         
     }
     IEnumerator ResetShoot()
