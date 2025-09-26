@@ -27,6 +27,7 @@ public class Bullets : MonoBehaviour
 #else
     ReloadButton.SetActive(false);
 #endif
+      
         currentNumberOfBullets = numberOfBullets;
         ReloadGO.SetActive(false);
         ReloadMobile.SetActive(false);

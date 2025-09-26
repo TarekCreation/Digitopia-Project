@@ -116,12 +116,6 @@ public class MusicGO : MonoBehaviour
                 yield return null;
             }
         }
-
-        // while (!operation.isDone)
-        // {
-        //     loadingBar.value = operation.progress;
-        //     yield return null;
-        // }
         if (currentOperation != null)
         {
             while (!currentOperation.isDone)
